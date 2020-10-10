@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo</title>
   </head>
-  
+
   <body>
     <div class="main-frame">
       <h1 class="title">todos</h1>
@@ -13,56 +13,103 @@
       <div class="container">
         <header class="input-area">
           <button class="toggle-button"></button>
-          <input type="text" placeholder="What needs to be done?" aria-label="Add task"/>
+          <input
+            type="text"
+            placeholder="What needs to be done?"
+            aria-label="Add task"
+          />
         </header>
 
-        <div class="todo-list" >
-          <section class="todo-item" >
-            <input type="checkbox" class="complete-button" aria-label="complete task"  />
+        <div class="todo-list">
+          <section class="todo-item">
+            <input
+              type="checkbox"
+              class="complete-button"
+              aria-label="complete task"
+            />
             <span class="todo-text">HTML</span>
-            <button class="remove-task-button" aria-label="remove item"></button>
-          </section>
-          
-          <section class="todo-item" >
-            <input type="checkbox" class="complete-button active" aria-label="complete task"  />
-            <span class="todo-text done">CSS</span>
-            <button class="remove-task-button" aria-label="remove item"></button>
+            <button
+              class="remove-task-button"
+              aria-label="remove item"
+            ></button>
           </section>
 
-          <section class="todo-item" >
-            <input type="checkbox" class="complete-button" aria-label="complete task"  />
-            <span class="todo-text">JS</span>
-            <button class="remove-task-button" aria-label="remove item"></button>
+          <section class="todo-item">
+            <input
+              type="checkbox"
+              class="complete-button active"
+              aria-label="complete task"
+            />
+            <span class="todo-text done">CSS</span>
+            <button
+              class="remove-task-button"
+              aria-label="remove item"
+            ></button>
           </section>
-          
-          <section class="todo-item" >
-            <input type="checkbox" class="complete-button" aria-label="complete task" />
+
+          <section class="todo-item">
+            <input
+              type="checkbox"
+              class="complete-button"
+              aria-label="complete task"
+            />
+            <span class="todo-text">JS</span>
+            <button
+              class="remove-task-button"
+              aria-label="remove item"
+            ></button>
+          </section>
+
+          <section class="todo-item">
+            <input
+              type="checkbox"
+              class="complete-button"
+              aria-label="complete task"
+            />
             <span class="todo-text">JS tools</span>
-            <button class="remove-task-button" aria-label="remove item"></button>
+            <button
+              class="remove-task-button"
+              aria-label="remove item"
+            ></button>
           </section>
         </div>
 
         <footer>
           <div class="control-pane" role="toolbar">
             <span class="left-intems-info" role="note">3 items left</span>
-            
+
             <div class="tabs" role="group">
-                <div>
-                  <input type="button" class="remove-task-button" value="All" id="all"/>
-                  <label for="all">All</label>
-                </div>
-  
-                <div>
-                  <input type="button" class="remove-task-button" value="Active" id="active"/>
-                  <label for="active">Active</label>
-                </div>
-  
-                <div>
-                  <input type="button" class="remove-task-button" value="Completed" id="completed"/>
-                  <label for="completed">Completed</label>
-                </div>
+              <div>
+                <input
+                  type="radio"
+                  class="remove-task-button"
+                  value="All"
+                  id="all"
+                />
+                <label for="all">All</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  class="remove-task-button"
+                  value="Active"
+                  id="active"
+                />
+                <label for="active">Active</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  class="remove-task-button"
+                  value="Completed"
+                  id="completed"
+                />
+                <label for="completed">Completed</label>
+              </div>
             </div>
-  
+
             <input
               type="button"
               class="remove-task-button"
