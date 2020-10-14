@@ -74,7 +74,7 @@
               aria-label="remove item"
             ></button>
           </li>
-        </div>
+        </ul>
 
         <footer>
           <div class="control-pane" role="toolbar">
@@ -84,11 +84,12 @@
               <div>
                 <input
                   type="radio"
-                  class="remove-task-button"
+                  class="task-fiter"
                   aria-label="all tasks"
                   value="All"
                   name="filter"
                   id="all"
+                  checked
                 />
                 <label for="all">All</label>
               </div>
@@ -96,7 +97,7 @@
               <div>
                 <input
                   type="radio"
-                  class="remove-task-button"
+                  class="task-fiter"
                   aria-label="active tasks"
                   value="Active"
                   name="filter"
@@ -108,7 +109,7 @@
               <div>
                 <input
                   type="radio"
-                  class="remove-task-button"
+                  class="task-fiter"
                   value="Completed"
                   aria-label="completed tasks"
                   name="filter"
@@ -120,7 +121,7 @@
 
             <input
               type="button"
-              class="remove-task-button"
+              class="clear-tasks-button"
               value="Clear completed"
             />
           </div>
