@@ -143,6 +143,7 @@ ul.todo-list {
 .todo-item:hover > .remove-task-button {
   justify-self: right;
   display: block;
+  outline: none;
 }
 
 .todo-item > .remove-task-button:before,
@@ -164,6 +165,7 @@ ul.todo-list {
 }
 
 .todo-item > input.complete-button {
+  outline: none;
   width: 0;
   height: 0;
 }
