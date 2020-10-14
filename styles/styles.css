@@ -49,7 +49,7 @@ body {
 .input-area {
   display: flex;
   align-items: center;
-  padding: 27px 17px 23px 17px;
+  padding: 24.5px 17px 20px 17px;
   width: 100%;
   border-bottom: 1px solid var(--grey-color);
 }
@@ -206,7 +206,7 @@ ul.todo-list {
 
 /* TODO: Убрать костыль */
 footer {
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 footer > .control-pane {
