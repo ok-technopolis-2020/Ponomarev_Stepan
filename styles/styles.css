@@ -22,16 +22,10 @@ body {
 }
 
 body {
+  display: grid;
+  justify-content: center;
+  align-items: center;
   font-family: "Roboto", sans-serif;
-}
-
-.main-frame {
-  position: absolute;
-  width: 50%;
-  height: max-content;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -60%);
 }
 
 .title {
@@ -196,6 +190,7 @@ input.complete-button:checked::before {
 }
 
 input.complete-button:checked ~ .todo-text {
+  animation: complete-task;
   text-decoration: line-through;
   color: var(--grey-color);
 }
