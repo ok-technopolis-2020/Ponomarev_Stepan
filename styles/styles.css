@@ -43,7 +43,7 @@ body {
 .input-area {
   display: flex;
   align-items: center;
-  padding: 24.5px 17px 20px 17px;
+  padding: 24px 17px 20px 17px;
   width: 100%;
   border-bottom: 1px solid var(--grey-color);
 }
@@ -129,11 +129,9 @@ ul.todo-list {
   background-color: transparent;
 }
 
-/* TODO: Загуглить тринсмишен */
 .todo-item > .remove-task-button:hover {
   transform: scale(1.2);
   cursor: pointer;
-  transition-duration: 200ms;
   transition: 200ms;
 }
 
