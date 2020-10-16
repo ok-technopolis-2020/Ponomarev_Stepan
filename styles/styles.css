@@ -202,6 +202,8 @@ input.complete-button:checked ~ .todo-text {
 
 .todo-text {
   font-size: 24px;
+  cursor: text;
+  width: max-content;
   font-weight: lighter;
   color: var(--task-item-text-color);
 }
