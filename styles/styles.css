@@ -167,6 +167,7 @@ input.complete-button {
 input.complete-button::before {
   display: grid;
   margin-left: 13px;
+  cursor: pointer;
   content: "";
   align-content: center;
   justify-content: center;
@@ -178,6 +179,12 @@ input.complete-button::before {
   background-size: cover;
   border: 1px solid var(--grey-color);
   transform: translate(-50%, -35%);
+}
+
+input.complete-button:hover::before {
+  content: "\2713";
+  font-size: 26px;
+  color: var(--grey-color);
 }
 
 input.complete-button:checked::before {
