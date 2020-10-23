@@ -84,6 +84,8 @@ body {
 
 .todo-list {
   list-style: none;
+  overflow: hidden;
+  overflow-y: auto;
   height: 320px;
   padding: 0;
 }
