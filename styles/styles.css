@@ -50,7 +50,6 @@ body {
   border-bottom: 1px solid var(--grey-color);
 }
 
-/* TODO: Заменить на иконку */
 .toggle-button {
   cursor: pointer;
   position: relative;
