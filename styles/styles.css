@@ -11,6 +11,7 @@
   --green-color: #5dc2af;
   --hover-grey-color: #fafafa;
   --task-item-text-color: #666666;
+  --outline-color: #818181;
 }
 
 html,
@@ -51,6 +52,7 @@ body {
 }
 
 .toggle-button {
+  outline-color: var(--outline-color);
   cursor: pointer;
   position: relative;
   border: none;
@@ -64,6 +66,7 @@ body {
 }
 
 .input-field {
+  outline-color: var(--outline-color);
   font-family: "Roboto", sans-serif;
   border: none;
   color: var(--task-item-text-color);
@@ -109,6 +112,7 @@ ul.todo-list {
 }
 
 .remove-task-button {
+  outline-color: var(--outline-color);
   width: 20px;
   height: 20px;
   border: none;
@@ -130,6 +134,7 @@ ul.todo-list {
 }
 
 input.complete-button {
+  outline-color: var(--outline-color);
   position: relative;
   z-index: 1;
 }
@@ -190,6 +195,7 @@ input.complete-button:checked ~ .todo-text {
   font-size: 14px;
   cursor: pointer;
   background-color: transparent;
+  outline-color: var(--outline-color);
   padding: 3px;
 }
 
@@ -208,6 +214,10 @@ input.complete-button:checked ~ .todo-text {
 .left-intems-info {
   font-size: 14px;
   color: #888888;
+}
+
+.task-fiter:focus ~ label {
+  outline: solid var(--outline-color);
 }
 
 .task-fiter ~ label {
