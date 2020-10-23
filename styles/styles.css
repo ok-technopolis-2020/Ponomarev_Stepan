@@ -30,6 +30,15 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+/* TODO: реализовать */
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
 .title {
   margin: 0;
   text-align: center;
@@ -38,6 +47,7 @@ body {
   color: var(--grey-color);
 }
 
+/* TODO: Добавить */
 .container {
   position: relative;
   border: 1px solid var(--grey-color);
@@ -114,28 +124,6 @@ ul.todo-list {
   background-color: var(--hover-grey-color);
 }
 
-.remove-task-button {
-  outline-color: var(--outline-color);
-  width: 20px;
-  height: 20px;
-  border: none;
-  background-color: transparent;
-}
-
-.remove-task-button:focus {
-  background: no-repeat center url(../assets/remove-button.svg);
-}
-
-.todo-item:hover > .remove-task-button {
-  background: no-repeat center url(../assets/remove-button.svg);
-}
-
-.todo-item > .remove-task-button:hover {
-  transform: scale(1.2);
-  cursor: pointer;
-  transition: 200ms;
-}
-
 input.complete-button {
   outline-color: var(--outline-color);
   position: relative;
@@ -179,8 +167,46 @@ input.complete-button:checked ~ .todo-text {
 .todo-text {
   font-size: 24px;
   width: 100%;
+  border: none;
   cursor: text;
+  font-family: "Roboto", sans-serif;
+  background-color: transparent;
+  outline-color: var(--outline-color);
   color: var(--task-item-text-color);
+}
+
+input.todo-text {
+  display: none;
+}
+
+.todo-item:hover > input.complete-button:not(:checked) ~ span.todo-text {
+  display: none;
+}
+
+.todo-item:hover > input.complete-button:not(:checked) ~ input.todo-text {
+  display: block;
+}
+
+.remove-task-button {
+  outline-color: var(--outline-color);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+}
+
+.remove-task-button:focus {
+  background: no-repeat center url(../assets/remove-button.svg);
+}
+
+.todo-item:hover > .remove-task-button {
+  background: no-repeat center url(../assets/remove-button.svg);
+}
+
+.todo-item > .remove-task-button:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  transition: 200ms;
 }
 
 .control-pane {
