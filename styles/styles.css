@@ -245,10 +245,6 @@ input.todo-text {
   color: #888888;
 }
 
-.task-fiter:focus ~ label {
-  outline: solid var(--outline-color);
-}
-
 .task-fiter ~ label {
   color: #888888;
   border-radius: 5px;
