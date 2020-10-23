@@ -84,6 +84,7 @@ body {
 
 .todo-list {
   list-style: none;
+  height: 320px;
   padding: 0;
 }
 
@@ -171,11 +172,6 @@ input.complete-button:checked ~ .todo-text {
   width: 100%;
   cursor: text;
   color: var(--task-item-text-color);
-}
-
-/* TODO: Убрать костыль */
-footer {
-  margin-top: 80px;
 }
 
 .control-pane {
