@@ -126,7 +126,6 @@ ul.todo-list {
 input.complete-button {
   outline-color: var(--outline-color);
   position: relative;
-  z-index: 1;
 }
 
 input.complete-button::before {
