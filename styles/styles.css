@@ -18,7 +18,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
   height: 100%;
 }
 
@@ -86,13 +85,13 @@ body {
   border: none;
   color: var(--task-item-text-color);
   padding: 0;
+  padding-left: 1rem;
   font-size: 24px;
 }
 
 .input-area > .input-field {
   margin: 0;
-  height: 100%;
-  width: 100%;
+  flex-grow: 1;
 }
 
 .input-field::placeholder {
@@ -131,8 +130,8 @@ input.complete-button {
 }
 
 input.complete-button::before {
+  position: absolute;
   display: block;
-  padding-top: 5px;
   text-align: center;
   margin-left: 13px;
   cursor: pointer;
@@ -165,10 +164,13 @@ input.complete-button:checked ~ .todo-text {
 }
 
 .todo-text {
-  font-size: 24px;
-  width: 100%;
   border: none;
   cursor: text;
+  width: 100%;
+  display: table;
+  font-size: 24px;
+  table-layout: fixed;
+  word-wrap: break-word;
   font-family: "Roboto", sans-serif;
   background-color: transparent;
   outline-color: var(--outline-color);
@@ -184,6 +186,7 @@ input.todo-text {
 }
 
 .todo-item:hover > input.complete-button:not(:checked) ~ input.todo-text {
+  padding: 0;
   display: block;
 }
 
