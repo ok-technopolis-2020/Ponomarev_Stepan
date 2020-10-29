@@ -12,6 +12,7 @@
   --hover-grey-color: #fafafa;
   --task-item-text-color: #666666;
   --outline-color: #818181;
+  --theme-color: #ffffff;
 }
 
 html,
@@ -52,6 +53,34 @@ body {
   border: 1px solid var(--grey-color);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 2rem;
+}
+
+.container::before {
+  display: inline;
+  background-color: transparent;
+  content: "";
+  top: 0px;
+  margin-left: 3px;
+  width: calc(100% - 6px);
+  height: calc(100% + 5px);
+  background-color: var(--theme-color);
+  position: absolute;
+  z-index: -200;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.container::after {
+  display: block;
+  background-color: transparent;
+  content: "";
+  top: 0px;
+  margin-left: 6px;
+  width: calc(100% - 12px);
+  background-color: var(--theme-color);
+  z-index: -201;
+  height: calc(100% + 10px);
+  position: absolute;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .input-area {
@@ -99,6 +128,7 @@ body {
 }
 
 .todo-list {
+  background-color: var(--theme-color);
   list-style: none;
   min-height: 320px;
   padding: 0;
@@ -212,6 +242,7 @@ input.todo-text {
 }
 
 .control-pane {
+  background-color: var(--theme-color);
   border-top: 1px solid var(--grey-color);
   display: grid;
   justify-content: space-between;
