@@ -109,7 +109,7 @@ body {
   font-size: 24px;
 }
 
-.input-area__input_no_margin {
+.input-area__input_no-margin {
   margin: 0;
   flex-grow: 1;
 }
@@ -125,7 +125,7 @@ body {
   padding: 0;
 }
 
-.todo-list_no_margin {
+.todo-list_no-margin {
   margin: 0;
 }
 
