@@ -48,7 +48,7 @@ body {
 .container::before {
   display: block;
   background-color: transparent;
-  content: "kek";
+  content: "";
   top: 5px;
   left: 0.5%;
   width: 99%;
