@@ -153,40 +153,45 @@ body {
   background-color: var(--hover-grey-color);
 }
 
-input.todo-list__complete-button {
+.todo-list__complete-button {
   outline-color: var(--outline-color);
-  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-input.todo-list__complete-button::before {
+.todo-list__complete-button::before {
   position: absolute;
   display: block;
   text-align: center;
-  margin-left: 13px;
+  margin-left: 12px;
   cursor: pointer;
   content: "";
-  z-index: 2;
   width: 40px;
   height: 40px;
   border-radius: 100%;
   background-color: white;
   background-size: cover;
   border: 1px solid var(--grey-color);
-  transform: translate(-50%, -35%);
+  transform: translate(-50%, -50%);
 }
 
-input.todo-list__complete-button:hover::before {
+.todo-list__complete-button:focus:before {
+  outline: 2px solid var(--outline-color);
+}
+
+.todo-list__complete-button:hover::before {
   background: no-repeat center white url(../assets/done-not-active.svg);
   color: var(--grey-color);
 }
 
-input.todo-list__complete-button:checked::before {
+.todo-list__complete-button:checked::before {
   background: no-repeat center white url(../assets/done.svg);
   border: 1px solid var(--green-color);
   color: var(--green-color);
 }
 
-input.todo-list__complete-button:checked ~ .todo-list__text {
+.todo-list__complete-button:checked ~ .todo-list__text {
   animation: complete-task;
   text-decoration: line-through;
   color: var(--grey-color);
@@ -211,13 +216,13 @@ input.todo-list__text {
 }
 
 .todo-list__item:hover
-  > input.todo-list__complete-button:not(:checked)
+  > .todo-list__complete-button:not(:checked)
   ~ span.todo-list__text {
   display: none;
 }
 
 .todo-list__item:hover
-  > input.todo-list__complete-button:not(:checked)
+  > .todo-list__complete-button:not(:checked)
   ~ input.todo-list__text {
   padding: 0;
   display: block;
