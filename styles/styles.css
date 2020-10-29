@@ -108,7 +108,7 @@ body {
   background-color: var(--hover-grey-color);
 }
 
-.input-field {
+.input-area__input {
   outline-color: var(--outline-color);
   font-family: "Roboto", sans-serif;
   border: none;
@@ -118,12 +118,12 @@ body {
   font-size: 24px;
 }
 
-.input-area > .input-field {
+.input-area__input_no_margin {
   margin: 0;
   flex-grow: 1;
 }
 
-.input-field::placeholder {
+.input-area__input::placeholder {
   color: var(--grey-color);
 }
 
@@ -134,11 +134,11 @@ body {
   padding: 0;
 }
 
-ul.todo-list {
+.todo-list_no_margin {
   margin: 0;
 }
 
-.todo-item {
+.todo-list__item {
   display: grid;
   grid-template-columns: 40px auto 20px;
   align-items: center;
@@ -148,17 +148,17 @@ ul.todo-list {
   min-height: 64px;
 }
 
-.todo-item:hover {
+.todo-list__item:hover {
   cursor: pointer;
   background-color: var(--hover-grey-color);
 }
 
-input.complete-button {
+input.todo-list__complete-button {
   outline-color: var(--outline-color);
   position: relative;
 }
 
-input.complete-button::before {
+input.todo-list__complete-button::before {
   position: absolute;
   display: block;
   text-align: center;
@@ -175,24 +175,24 @@ input.complete-button::before {
   transform: translate(-50%, -35%);
 }
 
-input.complete-button:hover::before {
+input.todo-list__complete-button:hover::before {
   background: no-repeat center white url(../assets/done-not-active.svg);
   color: var(--grey-color);
 }
 
-input.complete-button:checked::before {
+input.todo-list__complete-button:checked::before {
   background: no-repeat center white url(../assets/done.svg);
   border: 1px solid var(--green-color);
   color: var(--green-color);
 }
 
-input.complete-button:checked ~ .todo-text {
+input.todo-list__complete-button:checked ~ .todo-list__text {
   animation: complete-task;
   text-decoration: line-through;
   color: var(--grey-color);
 }
 
-.todo-text {
+.todo-list__text {
   border: none;
   cursor: text;
   width: 100%;
@@ -206,15 +206,19 @@ input.complete-button:checked ~ .todo-text {
   color: var(--task-item-text-color);
 }
 
-input.todo-text {
+input.todo-list__text {
   display: none;
 }
 
-.todo-item:hover > input.complete-button:not(:checked) ~ span.todo-text {
+.todo-list__item:hover
+  > input.todo-list__complete-button:not(:checked)
+  ~ span.todo-list__text {
   display: none;
 }
 
-.todo-item:hover > input.complete-button:not(:checked) ~ input.todo-text {
+.todo-list__item:hover
+  > input.todo-list__complete-button:not(:checked)
+  ~ input.todo-list__text {
   padding: 0;
   display: block;
 }
@@ -231,11 +235,11 @@ input.todo-text {
   background: no-repeat center url(../assets/remove-button.svg);
 }
 
-.todo-item:hover > .remove-task-button {
+.todo-list__item:hover > .remove-task-button {
   background: no-repeat center url(../assets/remove-button.svg);
 }
 
-.todo-item > .remove-task-button:hover {
+.todo-list__item > .remove-task-button:hover {
   transform: scale(1.2);
   cursor: pointer;
   transition: 200ms;
@@ -251,38 +255,35 @@ input.todo-text {
   padding: 12px 12px;
 }
 
-.clear-tasks-button {
+.control-pane__clear-tasks-button {
   color: #888888;
   border: none;
   font-size: 14px;
+  justify-self: right;
   cursor: pointer;
   background-color: transparent;
   outline-color: var(--outline-color);
   padding: 3px;
 }
 
-.control-pane > .clear-tasks-button {
-  justify-self: right;
-}
-
-.clear-tasks-button:hover {
+.control-pane__clear-tasks-button:hover {
   background-color: var(--hover-grey-color);
 }
 
-.clear-tasks-button:focus {
+.control-pane__clear-tasks-button:focus {
   background-color: var(--hover-grey-color);
 }
 
-.tabs {
+.control-pane__tabs {
   display: flex;
 }
 
-.left-intems-info {
+.control-pane__left-intems-info {
   font-size: 14px;
   color: #888888;
 }
 
-.task-fiter ~ label {
+.control-pane__task-filter ~ label {
   color: #888888;
   border-radius: 5px;
   padding: 3px 9px;
@@ -290,14 +291,14 @@ input.todo-text {
   border: 1px solid transparent;
 }
 
-.task-fiter:not(:checked) ~ label:hover {
+.control-pane__task-filter:not(:checked) ~ label:hover {
   background-color: var(--hover-grey-color);
 }
 
-.task-fiter {
+.control-pane__task-filter {
   appearance: none;
 }
 
-.task-fiter:checked ~ label {
+.control-pane__task-filter:checked ~ label {
   border: 1px solid var(--grey-color);
 }
