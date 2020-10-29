@@ -231,8 +231,17 @@ input.todo-list__text {
   height: auto;
 }
 
+input.todo-list__text:focus {
+  position: static;
+  margin: 0;
+  padding: 0;
+  clip: auto;
+  width: auto;
+  height: auto;
+}
+
 input.todo-list__text:focus ~ span.todo-list__text {
-  outline: 2px solid var(--outline-color);
+  display: none;
 }
 
 .todo-list__remove-task-button {
