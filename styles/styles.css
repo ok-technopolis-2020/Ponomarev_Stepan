@@ -223,7 +223,7 @@ input.todo-list__text {
   display: block;
 }
 
-.remove-task-button {
+.todo-list__remove-task-button {
   outline-color: var(--outline-color);
   width: 20px;
   height: 20px;
@@ -231,15 +231,15 @@ input.todo-list__text {
   background-color: transparent;
 }
 
-.remove-task-button:focus {
+.todo-list__remove-task-button:focus {
   background: no-repeat center url(../assets/remove-button.svg);
 }
 
-.todo-list__item:hover > .remove-task-button {
+.todo-list__item:hover > .todo-list__remove-task-button {
   background: no-repeat center url(../assets/remove-button.svg);
 }
 
-.todo-list__item > .remove-task-button:hover {
+.todo-list__remove-task-button:hover {
   transform: scale(1.2);
   cursor: pointer;
   transition: 200ms;
