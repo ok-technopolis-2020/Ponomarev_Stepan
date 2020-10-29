@@ -225,6 +225,7 @@ input.todo-list__text {
   ~ input.todo-list__text {
   position: static;
   margin: 0;
+  padding: 0;
   clip: auto;
   width: auto;
   height: auto;
