@@ -47,7 +47,6 @@ body {
   color: var(--grey-color);
 }
 
-/* TODO: Добавить */
 .container {
   position: relative;
   border: 1px solid var(--grey-color);
@@ -56,7 +55,7 @@ body {
 }
 
 .container::before {
-  display: inline;
+  display: block;
   background-color: transparent;
   content: "";
   top: 0px;
@@ -266,6 +265,10 @@ input.todo-text {
 }
 
 .clear-tasks-button:hover {
+  background-color: var(--hover-grey-color);
+}
+
+.clear-tasks-button:focus {
   background-color: var(--hover-grey-color);
 }
 
