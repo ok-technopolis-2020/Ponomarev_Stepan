@@ -31,15 +31,6 @@ body {
   background-color: rgb(245, 245, 245);
 }
 
-/* TODO: реализовать */
-.visually-hidden {
-  position: absolute;
-  clip: rect(0 0 0 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-}
-
 .title {
   margin: 0;
   text-align: center;
@@ -212,6 +203,14 @@ body {
 }
 
 input.todo-list__text {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+.todo-list__complete-button:checked ~ input.todo-list__text {
   display: none;
 }
 
@@ -224,8 +223,15 @@ input.todo-list__text {
 .todo-list__item:hover
   > .todo-list__complete-button:not(:checked)
   ~ input.todo-list__text {
-  padding: 0;
-  display: block;
+  position: static;
+  margin: 0;
+  clip: auto;
+  width: auto;
+  height: auto;
+}
+
+input.todo-list__text:focus ~ span.todo-list__text {
+  outline: 2px solid var(--outline-color);
 }
 
 .todo-list__remove-task-button {
