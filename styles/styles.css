@@ -20,6 +20,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: rgb(245, 245, 245);
 }
 
 body {
@@ -49,7 +50,6 @@ body {
 
 .container {
   position: relative;
-  border: 1px solid var(--grey-color);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 2rem;
 }
