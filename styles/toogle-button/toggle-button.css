@@ -6,8 +6,8 @@
   width: 60px;
   height: 100%;
   background: no-repeat center url(/assets/toogle-icon.svg);
-}
 
-.toggle-button:hover {
-  background-color: var(--hover-grey-color);
+  &:hover {
+    background-color: var(--hover-grey-color);
+  }
 }
