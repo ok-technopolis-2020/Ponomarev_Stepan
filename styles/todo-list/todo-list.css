@@ -8,10 +8,10 @@
   list-style: none;
   min-height: 320px;
   padding: 0;
-}
 
-.todo-list_no-margin {
-  margin: 0;
+  &_no-margin {
+    margin: 0;
+  }
 }
 
 /* 

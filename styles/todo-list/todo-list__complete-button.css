@@ -3,45 +3,51 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-}
 
-.todo-list__complete-button::before {
-  position: absolute;
-  display: block;
-  text-align: center;
-  margin-left: 12px;
-  cursor: pointer;
-  content: "";
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  background-color: white;
-  background-size: cover;
-  border: 1px solid var(--grey-color);
-  transform: translate(-50%, -50%);
-}
+  &::before {
+    position: absolute;
+    display: block;
+    text-align: center;
+    margin-left: 12px;
+    cursor: pointer;
+    content: "";
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: white;
+    background-size: cover;
+    border: 1px solid var(--grey-color);
+    transform: translate(-50%, -50%);
+  }
 
-.todo-list__complete-button:focus:before {
-  outline: 2px solid var(--outline-color);
-}
+  &:hover {
+    &::before {
+      background: no-repeat center white url(/assets/done-not-active.svg);
+      color: var(--grey-color);
+    }
+  }
 
-.todo-list__complete-button:hover::before {
-  background: no-repeat center white url(/assets/done-not-active.svg);
-  color: var(--grey-color);
-}
+  &:focus {
+    &::before {
+      outline: 2px solid var(--outline-color);
+    }
+  }
 
-.todo-list__complete-button:checked::before {
-  background: no-repeat center white url(/assets/done.svg);
-  border: 1px solid var(--green-color);
-  color: var(--green-color);
-}
+  &:checked {
+    ~ .todo-list__text {
+      animation: complete-task;
+      text-decoration: line-through;
+      color: var(--grey-color);
+    }
 
-.todo-list__complete-button:checked ~ .todo-list__text {
-  animation: complete-task;
-  text-decoration: line-through;
-  color: var(--grey-color);
-}
+    ~ input.todo-list__text {
+      display: none;
+    }
 
-.todo-list__complete-button:checked ~ input.todo-list__text {
-  display: none;
+    &::before {
+      background: no-repeat center white url(/assets/done.svg);
+      border: 1px solid var(--green-color);
+      color: var(--green-color);
+    }
+  }
 }
