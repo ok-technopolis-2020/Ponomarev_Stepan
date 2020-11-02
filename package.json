@@ -19,6 +19,6 @@
   "homepage": "https://github.com/ok-technopolis-2020/Ponomarev_Stepan#readme",
   "devDependencies": {
     "postcss": "^8.1.4",
-    "postcss-nested": "^5.0.1"
+    "postcss-nested": "^4.0.0"
   }
 }
