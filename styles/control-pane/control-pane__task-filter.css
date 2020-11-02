@@ -1,19 +1,23 @@
-.control-pane__task-filter ~ label {
-  color: var(--control-pane-text-color);
-  border-radius: 5px;
-  padding: 3px 9px;
-  cursor: pointer;
-  border: 1px solid transparent;
-}
-
-.control-pane__task-filter:not(:checked) ~ label:hover {
-  background-color: var(--hover-grey-color);
-}
-
 .control-pane__task-filter {
   appearance: none;
-}
 
-.control-pane__task-filter:checked ~ label {
-  border: 1px solid var(--grey-color);
+  ~ label {
+    color: var(--control-pane-text-color);
+    border-radius: 5px;
+    padding: 3px 9px;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  &:checked {
+    ~ label {
+      border: 1px solid var(--grey-color);
+    }
+  }
+
+  &:not(:checked) {
+    ~ label:hover {
+      background-color: var(--hover-grey-color);
+    }
+  }
 }

@@ -7,12 +7,12 @@
   background-color: transparent;
   outline-color: var(--outline-color);
   padding: 3px;
-}
 
-.control-pane__clear-tasks-button:hover {
-  background-color: var(--hover-grey-color);
-}
+  &:hover {
+    background-color: var(--hover-grey-color);
+  }
 
-.control-pane__clear-tasks-button:focus {
-  background-color: var(--hover-grey-color);
+  &:focus {
+    background-color: var(--hover-grey-color);
+  }
 }
