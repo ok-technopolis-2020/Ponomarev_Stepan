@@ -5,22 +5,22 @@
   padding: 0;
   padding-left: 1rem;
   font-size: 24px;
-}
 
-.input-area__input:placeholder-shown {
-  font-style: italic;
-}
+  &_thin_font {
+    font-style: normal;
+    font-weight: 300;
+  }
 
-.input-area__input_no-margin {
-  margin: 0;
-  flex-grow: 1;
-}
+  &_no-margin {
+    margin: 0;
+    flex-grow: 1;
+  }
 
-.input-area__input::placeholder {
-  color: var(--grey-color);
-}
+  &::placeholder {
+    color: var(--grey-color);
+  }
 
-.input-area__input_thin_font {
-  font-style: normal;
-  font-weight: 300;
+  &:placeholder-shown {
+    font-style: italic;
+  }
 }
