@@ -1,5 +1,5 @@
 .control-pane__task-filter ~ label {
-  color: #888888;
+  color: var(--control-pane-text-color);
   border-radius: 5px;
   padding: 3px 9px;
   cursor: pointer;

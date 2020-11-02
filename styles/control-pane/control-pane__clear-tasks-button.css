@@ -1,5 +1,5 @@
 .control-pane__clear-tasks-button {
-  color: #888888;
+  color: var(--control-pane-text-color);
   border: none;
   font-size: 14px;
   justify-self: right;
