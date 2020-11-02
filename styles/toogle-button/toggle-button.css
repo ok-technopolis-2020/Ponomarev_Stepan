@@ -1,0 +1,13 @@
+.toggle-button {
+  outline-color: var(--outline-color);
+  cursor: pointer;
+  position: relative;
+  border: none;
+  width: 60px;
+  height: 100%;
+  background: no-repeat center url(/assets/toogle-icon.svg);
+}
+
+.toggle-button:hover {
+  background-color: var(--hover-grey-color);
+}

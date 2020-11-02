@@ -7,7 +7,7 @@
 }
 
 .todo-list__remove-task-button:focus {
-  background: no-repeat center url(../assets/remove-button.svg);
+  background: no-repeat center url(/assets/remove-button.svg);
 }
 
 .todo-list__remove-task-button:hover {

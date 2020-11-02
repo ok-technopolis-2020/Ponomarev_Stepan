@@ -26,12 +26,12 @@
 }
 
 .todo-list__complete-button:hover::before {
-  background: no-repeat center white url(../assets/done-not-active.svg);
+  background: no-repeat center white url(/assets/done-not-active.svg);
   color: var(--grey-color);
 }
 
 .todo-list__complete-button:checked::before {
-  background: no-repeat center white url(../assets/done.svg);
+  background: no-repeat center white url(/assets/done.svg);
   border: 1px solid var(--green-color);
   color: var(--green-color);
 }

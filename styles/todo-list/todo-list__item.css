@@ -31,5 +31,5 @@
 }
 
 .todo-list__item:hover > .todo-list__remove-task-button {
-  background: no-repeat center url(../assets/remove-button.svg);
+  background: no-repeat center url(/assets/remove-button.svg);
 }
