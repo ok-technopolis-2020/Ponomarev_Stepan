@@ -16,6 +16,11 @@
   --task-item-text-color: #666666;
   --outline-color: #818181;
   --theme-color: #ffffff;
+  --background-color: rgb(245, 245, 245);
+}
+
+.changed-font {
+  font-family: "Roboto", sans-serif;
 }
 
 html,
@@ -30,8 +35,7 @@ body {
   justify-content: center;
   align-items: center;
   grid-template-columns: minmax(500px, 563px);
-  font-family: "Roboto", sans-serif;
-  background-color: rgb(245, 245, 245);
+  background-color: var(--background-color);
 }
 
 .title {

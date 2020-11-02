@@ -1,0 +1,17 @@
+.todo-list__remove-task-button {
+  outline-color: var(--outline-color);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+}
+
+.todo-list__remove-task-button:focus {
+  background: no-repeat center url(../assets/remove-button.svg);
+}
+
+.todo-list__remove-task-button:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  transition: 200ms;
+}

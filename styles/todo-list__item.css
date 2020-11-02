@@ -1,0 +1,35 @@
+.todo-list__item {
+  display: grid;
+  grid-template-columns: 40px auto 20px;
+  align-items: center;
+  border-bottom: 1px solid var(--grey-color);
+  gap: 10px;
+  padding: 13px 11px;
+  min-height: 64px;
+}
+
+.todo-list__item:hover {
+  cursor: pointer;
+  background-color: var(--hover-grey-color);
+}
+
+.todo-list__item:hover
+  > .todo-list__complete-button:not(:checked)
+  ~ span.todo-list__text {
+  display: none;
+}
+
+.todo-list__item:hover
+  > .todo-list__complete-button:not(:checked)
+  ~ input.todo-list__text {
+  position: static;
+  margin: 0;
+  padding: 0;
+  clip: auto;
+  width: auto;
+  height: auto;
+}
+
+.todo-list__item:hover > .todo-list__remove-task-button {
+  background: no-repeat center url(../assets/remove-button.svg);
+}

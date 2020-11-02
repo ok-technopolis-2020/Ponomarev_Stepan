@@ -1,0 +1,40 @@
+.todo-list__text_thin_font {
+  font-style: normal;
+  font-weight: 300;
+}
+
+.todo-list__text {
+  border: none;
+  cursor: text;
+  width: 100%;
+  display: table;
+  font-size: 24px;
+  table-layout: fixed;
+  word-wrap: break-word;
+  font-style: normal;
+  font-weight: 300;
+  background-color: transparent;
+  outline-color: var(--outline-color);
+  color: var(--task-item-text-color);
+}
+
+input.todo-list__text {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+input.todo-list__text:focus {
+  position: static;
+  margin: 0;
+  padding: 0;
+  clip: auto;
+  width: auto;
+  height: auto;
+}
+
+input.todo-list__text:focus ~ span.todo-list__text {
+  display: none;
+}
