@@ -1,0 +1,10 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.changed-font {
+  font-style: normal;
+  font-family: "Roboto", sans-serif;
+}

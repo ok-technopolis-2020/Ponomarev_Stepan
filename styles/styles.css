@@ -1,22 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 
 @import "./variables.css";
-@import "./input-area/input-area.css";
+@import "./common.css";
 @import "./todo-list/todo-list.css";
+@import "./input-area/input-area.css";
 @import "./control-pane/control-pane.css";
 @import "./toogle-button/toggle-button.css";
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-.changed-font {
-  font-style: normal;
-  font-family: "Roboto", sans-serif;
-}
 
 html,
 body {
