@@ -1,0 +1,18 @@
+.control-pane__clear-tasks-button {
+  color: var(--control-pane-text-color);
+  border: none;
+  font-size: 14px;
+  justify-self: right;
+  cursor: pointer;
+  background-color: transparent;
+  outline-color: var(--outline-color);
+  padding: 3px;
+
+  &:hover {
+    background-color: var(--hover-grey-color);
+  }
+
+  &:focus {
+    background-color: var(--hover-grey-color);
+  }
+}

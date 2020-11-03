@@ -1,0 +1,26 @@
+.input-area__input {
+  outline-color: var(--outline-color);
+  border: none;
+  color: var(--task-item-text-color);
+  padding: 0;
+  padding-left: 1rem;
+  font-size: 24px;
+
+  &_thin_font {
+    font-style: normal;
+    font-weight: 300;
+  }
+
+  &_no-margin {
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  &::placeholder {
+    color: var(--grey-color);
+  }
+
+  &:placeholder-shown {
+    font-style: italic;
+  }
+}

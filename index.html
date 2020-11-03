@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./styles/styles.css" rel="stylesheet"/>
+    <link href="/styles/styles.css" rel="stylesheet"/>
     <title>Todo</title>
   </head>
 
-  <body>      
+  <body class="changed-font">      
     <div class="main-frame">
       <h1 class="title">todos</h1>
 
@@ -15,7 +15,9 @@
         <header class="input-area">
           <button class="toggle-button" aria-label="complete all"></button>
           <input
-          class="input-area__input input-area__input_no-margin"
+          class="changed-font
+            input-area__input 
+            input-area__input_no-margin input-area__input_thin_font"
             type="text"
             placeholder="What needs to be done?"
             aria-label="Add task"
@@ -29,8 +31,12 @@
               class="todo-list__complete-button"
               aria-label="complete task"
             />
-            <input type="text" class="todo-list__text" value="HTML"/>
-            <span class="todo-list__text">HTML</span>
+            <input type="text" class="todo-list__text 
+            todo-list__text_thin_font 
+            changed-font" value="HTML"/>
+            <span class="todo-list__text 
+            todo-list__text_thin_font 
+            changed-font ">HTML</span>
             <button
               class="todo-list__remove-task-button"
               aria-label="remove item"
@@ -44,8 +50,8 @@
               aria-label="complete task"
               checked
             />
-            <input type="text" class="todo-list__text" value="CSS"/>
-            <span class="todo-list__text">CSS</span>
+            <input type="text" class="todo-list__text todo-list__text_thin_font changed-font" value="CSS"/>
+            <span class="todo-list__text todo-list__text_thin_font changed-font">CSS</span>
             <button
               class="todo-list__remove-task-button"
               aria-label="remove item"
@@ -58,8 +64,8 @@
               class="todo-list__complete-button"
               aria-label="complete task"
             />
-            <input type="text" class="todo-list__text" value="JS"/>
-            <span class="todo-list__text">JS</span>
+            <input type="text" class="todo-list__text todo-list__text_thin_font changed-font" value="JS"/>
+            <span class="todo-list__text todo-list__text_thin_font changed-font">JS</span>
             <button
               class="todo-list__remove-task-button"
               aria-label="remove item"
@@ -72,8 +78,8 @@
               class="todo-list__complete-button"
               aria-label="complete task"
             />
-            <input type="text" class="todo-list__text" value="JS tools"/>
-            <span class="todo-list__text">JS tools</span>
+            <input type="text" class="todo-list__text todo-list__text_thin_font changed-font" value="JS tools"/>
+            <span class="todo-list__text todo-list__text_thin_font changed-font">JS tools</span>
             <button
               class="todo-list__remove-task-button"
               aria-label="remove item"
@@ -133,5 +139,7 @@
         </footer>
       </div>
     </div>
+
+    <script src="/src/index.js"></script>
   </body>
 </html>

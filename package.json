@@ -1,0 +1,24 @@
+{
+  "name": "ponomarev_stepan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ok-technopolis-2020/Ponomarev_Stepan.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ok-technopolis-2020/Ponomarev_Stepan/issues"
+  },
+  "homepage": "https://github.com/ok-technopolis-2020/Ponomarev_Stepan#readme",
+  "devDependencies": {
+    "postcss": "^8.1.4",
+    "postcss-nested": "^4.0.0"
+  }
+}

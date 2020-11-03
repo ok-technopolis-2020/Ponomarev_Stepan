@@ -1,0 +1,10 @@
+:root {
+  --background-color: rgb(245, 245, 245);
+  --theme-color: #ffffff;
+  --grey-color: #cccccc;
+  --green-color: #5dc2af;
+  --outline-color: #818181;
+  --hover-grey-color: #fafafa;
+  --task-item-text-color: #666666;
+  --control-pane-text-color: #888888;
+}

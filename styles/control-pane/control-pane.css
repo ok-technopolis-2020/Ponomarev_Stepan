@@ -1,0 +1,23 @@
+@import "./control-pane__tabs.css";
+@import "./control-pane__task-filter.css";
+@import "./control-pane__left-intems-info.css";
+@import "./control-pane__clear-tasks-button.css";
+
+.control-pane {
+  background-color: var(--theme-color);
+  border-top: 1px solid var(--grey-color);
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 92px auto 124px;
+  align-items: center;
+  padding: 12px 12px;
+}
+
+/* 
+Elements:
+
+.control-pane__tabs
+.control-pane__task-filter
+.control-pane__left-intems-info
+.control-pane__clear-tasks-button 
+*/

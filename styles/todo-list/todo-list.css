@@ -1,0 +1,24 @@
+@import "./todo-list__item.css";
+@import "./todo-list__text.css";
+@import "./todo-list__complete-button.css";
+@import "./todo-list__remove-task-button.css";
+
+.todo-list {
+  background-color: var(--theme-color);
+  list-style: none;
+  min-height: 320px;
+  padding: 0;
+
+  &_no-margin {
+    margin: 0;
+  }
+}
+
+/* 
+Elements:
+
+.todo-list__item
+.todo-list__text
+.todo-list__complete-button 
+.todo-list__remove-task-button 
+*/
