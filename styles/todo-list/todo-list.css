@@ -1,7 +1,7 @@
-@import "./todo-list__item.css";
-@import "./todo-list__text.css";
-@import "./todo-list__complete-button.css";
-@import "./todo-list__remove-task-button.css";
+@import "/styles/todo-list/todo-list__item.css";
+@import "/styles/todo-list/todo-list__text.css";
+@import "/styles/todo-list/todo-list__complete-button.css";
+@import "/styles/todo-list/todo-list__remove-task-button.css";
 
 .todo-list {
   background-color: var(--theme-color);

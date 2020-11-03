@@ -20,5 +20,10 @@
   "devDependencies": {
     "postcss": "^8.1.4",
     "postcss-nested": "^4.0.0"
+  },
+  "dependencies": {
+    "assemble": "^0.3.83",
+    "grunt": "^0.4.5",
+    "styles": "^0.2.1"
   }
 }

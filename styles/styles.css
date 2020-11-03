@@ -1,9 +1,9 @@
-@import "./variables.css";
-@import "./common.css";
-@import "./todo-list/todo-list.css";
-@import "./input-area/input-area.css";
-@import "./control-pane/control-pane.css";
-@import "./toogle-button/toggle-button.css";
+@import "/styles/variables.css";
+@import "/styles/common.css";
+@import "/styles/todo-list/todo-list.css";
+@import "/styles/input-area/input-area.css";
+@import "/styles/control-pane/control-pane.css";
+@import "/styles/toogle-button/toggle-button.css";
 
 html,
 body {
