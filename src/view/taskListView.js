@@ -51,13 +51,22 @@ class TaskListView {
   }
 
   _inputField(task) {
+    let valueBefore = task.text;
     const inputField = document.createElement('input');
     
     inputField.type = 'text';
     inputField.classList.add('todo-list__text', 'todo-list__text_thin_font', 'changed-font');
     inputField.value = task.text;
 
-    inputField.addEventListener('focusout', ({target}) => this._changeTextAction(task, target.value))
+    inputField.addEventListener('focusin', ({target}) => {
+      valueBefore = target.value;
+    });
+
+    inputField.addEventListener('focusout', ({target}) => {
+      if (target.value !== valueBefore) {
+        this._changeTextAction(task, target.value)
+      }
+    });
 
     return inputField;
   }
