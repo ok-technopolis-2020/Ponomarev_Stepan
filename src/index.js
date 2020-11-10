@@ -2,6 +2,7 @@
 
 import {getId, isTextValid} from './helpers'
 import addTaskFormView from "./view/addTaskFormView"
+import controlPaneView from "./view/controlPaneView"
 import taskListView from "./view/taskListView"
 import taskStore from "./store"
 
@@ -9,17 +10,30 @@ const form = addTaskFormView.form;
 const completeAllButton = addTaskFormView.completeAllButton;
 const addTaskInputField = addTaskFormView.inputField;
 
-taskStore.init();
-taskListView.init(onCompleteTask, onTaskTextChanged, onDeleteTask);
-taskListView.renderTasks(taskStore.taskList);
+const leftItemsInfo = controlPaneView.leftItemsInfo;
+const filterRadioButtons = controlPaneView.filterRadioButtons;
+const clearCompletedButton = controlPaneView.clearCompletedButton;
 
 form.addEventListener('submit', onFormSubmit);
-completeAllButton.addEventListener('click', onClickCompleteAll)
+completeAllButton.addEventListener('click', onClickCompleteAll);
 
+clearCompletedButton.addEventListener('click', onClickClearCompletedTasks)
+
+init();
+
+function init() {
+  taskStore.init();
+  taskListView.init(onCompleteTask, onTaskTextChanged, onDeleteTask);
+  updateLeftInfo();
+  taskListView.renderTasks(taskStore.taskList);
+}
+
+// Events
 function onClickCompleteAll(e) {
   e.preventDefault();
 
   setTasksCompletedStatus(!taskStore.areAllTasksCompleted);
+  updateLeftInfo();
 }
 
 function onFormSubmit(e) {
@@ -38,16 +52,21 @@ function onFormSubmit(e) {
 
 
   taskListView.renderTasks(taskStore.taskList);
+  updateLeftInfo();
 }
 
 function onDeleteTask(id) {
   taskStore.removeTask(id);
   taskListView.renderTasks(taskStore.taskList);
+
+  updateLeftInfo();
 }
 
 function onCompleteTask(task, completeStatus) {
   task.completed = completeStatus;
   taskStore.saveTask(task);
+
+  updateLeftInfo();
 }
 
 function onTaskTextChanged(task, text) {
@@ -59,6 +78,15 @@ function onTaskTextChanged(task, text) {
   taskListView.renderTasks(taskStore.taskList);
 }
 
+function onClickClearCompletedTasks() {
+  const tasksToRemove = taskStore.taskList.filter(task => task.completed);
+
+  tasksToRemove.forEach(task => taskStore.removeTask(task.id));
+
+  taskListView.renderTasks(taskStore.taskList);
+}
+
+// Helpers
 function createTask(text) {
   const task = {
     id: getId(),
@@ -77,4 +105,10 @@ function setTasksCompletedStatus(status) {
 
   taskStore.areAllTasksCompleted = status;
   taskListView.renderTasks(taskStore.taskList);
+}
+
+function updateLeftInfo() {
+  const n = taskStore.taskList.filter(task => !task.completed).length;
+
+  controlPaneView.updateLeftItemsInfo(n);
 }
