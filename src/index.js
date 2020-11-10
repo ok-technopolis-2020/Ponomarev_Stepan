@@ -10,14 +10,14 @@ const form = addTaskFormView.form;
 const completeAllButton = addTaskFormView.completeAllButton;
 const addTaskInputField = addTaskFormView.inputField;
 
-const leftItemsInfo = controlPaneView.leftItemsInfo;
 const filterRadioButtons = controlPaneView.filterRadioButtons;
 const clearCompletedButton = controlPaneView.clearCompletedButton;
 
 form.addEventListener('submit', onFormSubmit);
 completeAllButton.addEventListener('click', onClickCompleteAll);
 
-clearCompletedButton.addEventListener('click', onClickClearCompletedTasks)
+filterRadioButtons.forEach(filter => filter.addEventListener('change', renderTasks));
+clearCompletedButton.addEventListener('click', onClickClearCompletedTasks);
 
 init();
 
