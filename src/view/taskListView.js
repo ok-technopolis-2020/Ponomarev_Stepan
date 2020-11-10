@@ -2,11 +2,13 @@ class TaskListView {
   constructor() {
     this._taskList = document.querySelector(".todo-list");
     this._completeTaskAction = null;
+    this._changeTextAction = null;
     this._removeTaskActiom = null;
   }
 
-  init(completeTaskAction, removeTaskAction) {
+  init(completeTaskAction, changeTextAction, removeTaskAction) {
     this._completeTaskAction = completeTaskAction;
+    this._changeTextAction = changeTextAction;
     this._removeTaskActiom = removeTaskAction;
   }
 
@@ -53,6 +55,8 @@ class TaskListView {
     inputField.type = 'text';
     inputField.classList.add('todo-list__text', 'todo-list__text_thin_font', 'changed-font');
     inputField.value = task.text;
+
+    inputField.addEventListener('focusout', ({target}) => this._changeTextAction(task, target.value))
 
     return inputField;
   }

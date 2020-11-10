@@ -9,7 +9,7 @@ const form = addTaskFormView.form;
 const addTaskInputField = addTaskFormView.inputField;
 
 taskStore.init();
-taskListView.init(onCompleteTask, onDeleteTask);
+taskListView.init(onCompleteTask, onTaskTextChanged, onDeleteTask);
 taskListView.renderTasks(taskStore.taskList);
 
 form.addEventListener("submit", onFormSubmit);
@@ -34,6 +34,13 @@ function onDeleteTask(id) {
 function onCompleteTask(task, completeStatus) {
   task.completed = completeStatus;
   taskStore.saveTask(task);
+}
+
+function onTaskTextChanged(task, text) {
+  task.text = text;
+
+  taskStore.saveTask(task);
+  taskListView.renderTasks(taskStore.taskList);
 }
 
 function createTask(text) {
