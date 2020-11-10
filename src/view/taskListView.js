@@ -12,35 +12,38 @@ class TaskListView {
 
   renderTasks(tasks) {
     this._taskList.innerHTML = '';
-
     const template = document.createDocumentFragment();
 
-    for (task in tasks) {
+    tasks.forEach(task => {
       template.appendChild(this._taskItem(task));
-    }
+    });
 
     this._taskList.appendChild(template);
   }
 
   _taskItem(task) {
     const li = document.createElement('li')
-    const checkBox = _checkBox();
-    const inputField = _inputField(task);
-    const spanField = _spanField(task);
+    const checkBox = this._checkBox(task);
+    const inputField = this._inputField(task);
+    const spanField = this._spanField(task);
     const removeButton = this._removeTaskButton(task);
 
     li.classList.add('todo-list__item');
     
     li.append(checkBox, inputField, spanField, removeButton);
+
+    return li;
   }
 
-  _checkBox() {
+  _checkBox(task) {
     const checkBox = document.createElement('input');
 
     checkBox.type = 'checkbox';
     checkBox.classList.add('todo-list__complete-button');
     checkBox.setAttribute('aria-label', 'complete task');
-    
+
+    checkBox.addEventListener('click', ({target}) => this._completeTaskAction(task,  target.checked));
+
     return checkBox;
   }
 
@@ -54,7 +57,7 @@ class TaskListView {
     return inputField;
   }
 
-  __spanField(task) {
+  _spanField(task) {
     const spanField = document.createElement('span');
     
     spanField.classList.add('todo-list__text', 'todo-list__text_thin_font', 'changed-font');
@@ -68,7 +71,10 @@ class TaskListView {
 
     button.classList.add('todo-list__remove-task-button');
     button.setAttribute('aria-label', 'remove item');
-    button.addEventListener('click', () => this._removeTaskActiom(task));
+
+    button.addEventListener('click', () => this._removeTaskActiom(task.id));
+
+    return button;
   }
 }
 

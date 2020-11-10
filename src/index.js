@@ -8,25 +8,32 @@ import taskStore from "./store"
 const form = addTaskFormView.form;
 const addTaskInputField = addTaskFormView.inputField;
 
-taskListView.init(() => {}, onDeleteTask);
+taskStore.init();
+taskListView.init(onCompleteTask, onDeleteTask);
+taskListView.renderTasks(taskStore.taskList);
 
 form.addEventListener("submit", onFormSubmit);
 
 function onFormSubmit(e) {
-  const value = addTaskInputField.value;
+  const text = addTaskInputField.value;
+  const task = createTask(text);
+
+  taskStore.saveTask(task);
 
   form.reset();
   e.preventDefault();
 
-  taskListView.renderTasks([]);
+  taskListView.renderTasks(taskStore.taskList);
 }
 
-function onDeleteTask(task) {
-  console.log(task);
+function onDeleteTask(id) {
+  taskStore.removeTask(id);
+  taskListView.renderTasks(taskStore.taskList);
 }
 
-function onConpleteTask(task, completeStatus) {
+function onCompleteTask(task, completeStatus) {
   task.completed = completeStatus;
+  taskStore.saveTask(task);
 }
 
 function createTask(text) {
@@ -36,5 +43,5 @@ function createTask(text) {
     completed: false
   }
 
-  
+  return task;
 }

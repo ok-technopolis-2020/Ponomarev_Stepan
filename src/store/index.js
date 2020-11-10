@@ -3,17 +3,27 @@ import {taskListKey} from './keyList'
 class TaskStore {
   constructor() {
     this._tasks = {};
-    this._unicueId = 0;
-    this._init();
+  }
+
+  init() {
+    const taskListJson = localStorage.getItem(taskListKey);
+    const taskListObj = JSON.parse(taskListJson);
+
+    this._tasks = taskListObj == null ? {} : taskListObj;
   }
 
   saveTask(task) {
     this._tasks[task.id] = task;
+    this._saveTasks();
   }
 
-  _init() {
-    const taskListJson = localStorage.getItem(taskListKey);
-    this._tasks = JSON.parse(taskListJson);
+  removeTask(id) {
+    delete this._tasks[id];
+    this._saveTasks();
+  }
+
+  get taskList() {
+    return Object.values(this._tasks);
   }
 
   _saveTasks() {
