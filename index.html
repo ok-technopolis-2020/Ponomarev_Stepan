@@ -13,9 +13,10 @@
       <h1 class="title">todos</h1>
 
       <div class="container">
-        <header class="input-area">
+        <form role="heading" name="addTaskForm" class="input-area">
           <button class="toggle-button" aria-label="complete all"></button>
           <input
+          name="addTaskInputField"
           class="changed-font
             input-area__input 
             input-area__input_no-margin input-area__input_thin_font"
@@ -23,7 +24,7 @@
             placeholder="What needs to be done?"
             aria-label="Add task"
           />
-        </header>
+        </form>
 
         <ul class="todo-list todo-list_no-margin">
           <li class="todo-list__item">

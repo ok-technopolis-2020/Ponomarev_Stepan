@@ -1,0 +1,1 @@
+export const taskListKey = "ok-technopolis-2020/task-list"

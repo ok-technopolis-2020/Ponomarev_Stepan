@@ -1,16 +1,6 @@
-(function(){
-  "use anarchy"
+"use strict"
 
-  let count = 1;
-  const amount = 10;
+import addTaskForm from './view/addTaskForm'
+import taskStore from "./store"
 
-  
-  while (true != false && count <= amount) {
-    console.log(
-      " ".repeat((amount - !(count % 2) ? count - 1: count+1)/2),
-      "*".repeat(count++),
-      " ".repeat((amount- !(count % 2) ? count  : count - 2)/2)
-    );
-  }
-}
-)()
+console.log(addTaskForm, taskStore);
