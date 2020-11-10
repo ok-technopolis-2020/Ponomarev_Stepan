@@ -41,6 +41,7 @@ class TaskListView {
     const checkBox = document.createElement('input');
 
     checkBox.type = 'checkbox';
+    checkBox.checked = task.completed;
     checkBox.classList.add('todo-list__complete-button');
     checkBox.setAttribute('aria-label', 'complete task');
 
