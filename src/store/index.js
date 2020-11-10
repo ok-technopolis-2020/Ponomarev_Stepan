@@ -2,18 +2,18 @@ import {taskListKey} from './keyList'
 
 class TaskStore {
   constructor() {
-    this._tasks = [];
+    this._tasks = {};
+    this._unicueId = 0;
     this._init();
   }
 
-  addTask(task) {
-    this._tasks.push(task);
+  saveTask(task) {
+    this._tasks[task.id] = task;
   }
 
   _init() {
     const taskListJson = localStorage.getItem(taskListKey);
-    const taskList = JSON.parse(taskListJson);
-    this._tasks = taskList !== null ? taskList : this._tasks;
+    this._tasks = JSON.parse(taskListJson);
   }
 
   _saveTasks() {

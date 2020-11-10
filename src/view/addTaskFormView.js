@@ -1,4 +1,4 @@
-class AddTaskForm {
+class AddTaskFormView {
   constructor() {
     this._form = document.forms["addTaskForm"];
     this._inputField = this._form["addTaskInputField"];
@@ -13,6 +13,6 @@ class AddTaskForm {
   }
 }
 
-const addTaskForm = new AddTaskForm();
+const addTaskFormView = new AddTaskFormView();
 
-export default addTaskForm;
+export default addTaskFormView;
