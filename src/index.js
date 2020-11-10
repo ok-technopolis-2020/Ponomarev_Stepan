@@ -5,7 +5,6 @@ import addTaskFormView from "./view/addTaskFormView"
 import controlPaneView from "./view/controlPaneView"
 import taskListView from "./view/taskListView"
 import taskStore from "./store"
-import { task } from 'grunt'
 
 const form = addTaskFormView.form;
 const completeAllButton = addTaskFormView.completeAllButton;
@@ -88,7 +87,6 @@ function renderTasks() {
   const filterMode = filterRadioButtons.find(f => f.checked).value;
 
   let tasks = [];
-
   switch (filterMode) {
     case 'All':
       tasks = taskStore.taskList;
