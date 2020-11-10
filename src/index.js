@@ -1,6 +1,6 @@
 "use strict"
 
-import {getId, isTextValid} from './helpers'
+import { getId, isTextValid } from './helpers'
 import addTaskFormView from "./view/addTaskFormView"
 import controlPaneView from "./view/controlPaneView"
 import taskListView from "./view/taskListView"
