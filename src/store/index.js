@@ -27,7 +27,7 @@ class TaskStore {
   }
 
   get areAllTasksCompleted() {
-    return this.taskList.reduce((acc, task) => acc & task.completed, true);
+    return this.taskList.reduce((acc, task) => acc && task.completed, true);
   }
 
   set areAllTasksCompleted(value) {
