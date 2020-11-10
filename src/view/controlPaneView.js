@@ -10,7 +10,7 @@ class ControlPaneView {
   }
 
   get filterRadioButtons() {
-    return this._filterRadioButtons;
+    return Array.from(this._filterRadioButtons);
   }
 
   get clearCompletedButton() {

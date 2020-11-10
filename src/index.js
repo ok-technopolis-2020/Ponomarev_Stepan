@@ -5,6 +5,7 @@ import addTaskFormView from "./view/addTaskFormView"
 import controlPaneView from "./view/controlPaneView"
 import taskListView from "./view/taskListView"
 import taskStore from "./store"
+import { task } from 'grunt'
 
 const form = addTaskFormView.form;
 const completeAllButton = addTaskFormView.completeAllButton;
@@ -24,8 +25,7 @@ init();
 function init() {
   taskStore.init();
   taskListView.init(onCompleteTask, onTaskTextChanged, onDeleteTask);
-  updateLeftInfo();
-  taskListView.renderTasks(taskStore.taskList);
+  renderTasks();
 }
 
 // Events
@@ -33,7 +33,7 @@ function onClickCompleteAll(e) {
   e.preventDefault();
 
   setTasksCompletedStatus(!taskStore.areAllTasksCompleted);
-  updateLeftInfo();
+  renderTasks();
 }
 
 function onFormSubmit(e) {
@@ -50,23 +50,20 @@ function onFormSubmit(e) {
 
   taskStore.saveTask(task);
 
-
-  taskListView.renderTasks(taskStore.taskList);
-  updateLeftInfo();
+  renderTasks();
 }
 
 function onDeleteTask(id) {
   taskStore.removeTask(id);
-  taskListView.renderTasks(taskStore.taskList);
 
-  updateLeftInfo();
+  renderTasks()
 }
 
 function onCompleteTask(task, completeStatus) {
   task.completed = completeStatus;
   taskStore.saveTask(task);
 
-  updateLeftInfo();
+  renderTasks();
 }
 
 function onTaskTextChanged(task, text) {
@@ -75,7 +72,7 @@ function onTaskTextChanged(task, text) {
     taskStore.saveTask(task);
   }
 
-  taskListView.renderTasks(taskStore.taskList);
+  renderTasks();
 }
 
 function onClickClearCompletedTasks() {
@@ -83,10 +80,31 @@ function onClickClearCompletedTasks() {
 
   tasksToRemove.forEach(task => taskStore.removeTask(task.id));
 
-  taskListView.renderTasks(taskStore.taskList);
+  renderTasks();
 }
 
 // Helpers
+function renderTasks() {
+  const filterMode = filterRadioButtons.find(f => f.checked).value;
+
+  let tasks = [];
+
+  switch (filterMode) {
+    case 'All':
+      tasks = taskStore.taskList;
+      break;
+    case 'Active':
+      tasks = taskStore.taskList.filter(task => !task.completed);
+      break;
+    case 'Completed':
+      tasks = taskStore.taskList.filter(task => task.completed);
+      break;
+  }
+
+  updateLeftInfo();
+  taskListView.renderTasks(tasks);
+}
+
 function createTask(text) {
   const task = {
     id: getId(),
@@ -104,7 +122,6 @@ function setTasksCompletedStatus(status) {
   });
 
   taskStore.areAllTasksCompleted = status;
-  taskListView.renderTasks(taskStore.taskList);
 }
 
 function updateLeftInfo() {
