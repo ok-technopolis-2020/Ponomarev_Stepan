@@ -3,7 +3,6 @@ import {taskListKey} from './keyList'
 class TaskStore {
   constructor() {
     this._tasks = {};
-    this._allTaskAreCompleted = false;
   }
 
   init() {
@@ -14,10 +13,6 @@ class TaskStore {
   }
 
   saveTask(task) {
-    if (!task.completed) {
-      this._allTaskAreCompleted = false;
-    }
-
     this._tasks[task.id] = task;
     this._saveTasks();
   }
@@ -32,7 +27,7 @@ class TaskStore {
   }
 
   get areAllTasksCompleted() {
-    return this._allTaskAreCompleted;
+    return this.taskList.reduce((acc, task) => acc & task.completed, true);
   }
 
   set areAllTasksCompleted(value) {
