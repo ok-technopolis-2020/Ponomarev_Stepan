@@ -20,6 +20,12 @@ class TaskListView {
       template.appendChild(this._taskItem(task));
     });
 
+    if (tasks.length == 0) {
+      this._taskList.classList.add("todo-list_empty");
+    } else {
+      this._taskList.classList.remove("todo-list_empty");
+    }
+
     this._taskList.appendChild(template);
   }
 

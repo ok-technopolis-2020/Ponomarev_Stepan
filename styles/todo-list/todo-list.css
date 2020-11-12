@@ -12,6 +12,22 @@
   &_no-margin {
     margin: 0;
   }
+
+  &_empty {
+    animation-name: apperance;
+    animation-duration: 1s;
+    background: no-repeat center url(/assets/empty-list.svg);
+    background-size: 30%;
+  }
+}
+
+@keyframes apperance {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* 
