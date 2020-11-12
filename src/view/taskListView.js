@@ -1,3 +1,6 @@
+
+//TODO: Реализовать рендер 1 таски
+//TODO: Реализовать удаление одной таски
 class TaskListView {
   constructor() {
     this._taskList = document.querySelector(".todo-list");
