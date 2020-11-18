@@ -20,23 +20,30 @@ class TaskListView {
       template.appendChild(this._taskItem(task));
     });
 
-    if (tasks.length == 0) {
-      this._taskList.classList.add("todo-list_empty");
-    } else {
-      this._taskList.classList.remove("todo-list_empty");
-    }
+    this._setEmptyClass(tasks.length == 0);
 
     this._taskList.appendChild(template);
   }
 
   removeTask(id) {
-    const taskItem = Array.from(this._taskList.childNodes).find(t => t.dataset.id === id);
+    const tasks = Array.from(this._taskList.childNodes);
+    const taskItem = tasks.find(t => t.dataset.id === id);
 
     if (!taskItem) {
       return;
     }
 
     this._taskList.removeChild(taskItem);
+
+    this._setEmptyClass(tasks.length - 1 == 0);
+  }
+
+  _setEmptyClass(neededEmptyClass) {
+    if (neededEmptyClass) {
+      this._taskList.classList.add("todo-list_empty");
+    } else {
+      this._taskList.classList.remove("todo-list_empty");
+    }
   }
 
   _taskItem(task) {
