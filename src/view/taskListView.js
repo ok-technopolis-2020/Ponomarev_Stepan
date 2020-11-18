@@ -1,6 +1,3 @@
-
-//TODO: Реализовать рендер 1 таски
-//TODO: Реализовать удаление одной таски
 class TaskListView {
   constructor() {
     this._taskList = document.querySelector(".todo-list");
@@ -32,12 +29,23 @@ class TaskListView {
     this._taskList.appendChild(template);
   }
 
+  removeTask(id) {
+    const taskItem = Array.from(this._taskList.childNodes).find(t => t.dataset.id === id);
+
+    if (!taskItem) {
+      return;
+    }
+
+    this._taskList.removeChild(taskItem);
+  }
+
   _taskItem(task) {
-    const li = document.createElement('li')
+    const li = document.createElement('li');
     const checkBox = this._checkBox(task);
     const inputField = this._inputField(task);
     const spanField = this._spanField(task);
     const removeButton = this._removeTaskButton(task);
+    li.dataset.id = task.id;
 
     li.classList.add('todo-list__item');
     
@@ -73,7 +81,7 @@ class TaskListView {
 
     inputField.addEventListener('focusout', ({target}) => {
       if (target.value !== valueBefore) {
-        this._changeTextAction(task, target.value)
+        this._changeTextAction(task, target.value);
       }
     });
 
