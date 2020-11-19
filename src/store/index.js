@@ -13,10 +13,10 @@ class TaskStore {
   }
 
   saveTask(task) {
-    const id = this._tasks.findIndex(t => t.id == task.id);
+    const index = this._tasks.findIndex(t => t.id == task.id);
     
-    if (id !== -1) {
-      this._tasks[id] = task;
+    if (index !== -1) {
+      this._tasks[index] = task;
     } else {
       this._tasks.push(task);
     }
