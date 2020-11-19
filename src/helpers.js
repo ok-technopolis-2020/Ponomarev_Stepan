@@ -8,4 +8,4 @@ export function getId() {
   }
 
   return true;
- }
+ };

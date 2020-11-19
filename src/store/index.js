@@ -30,7 +30,7 @@ class TaskStore {
   }
 
   get taskList() {
-    return Object.values(this._tasks);
+    return this._tasks;
   }
 
   get areAllTasksCompleted() {
