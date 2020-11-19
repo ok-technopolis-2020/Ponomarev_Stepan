@@ -17,7 +17,11 @@ class TaskListView {
     const template = document.createDocumentFragment();
 
     tasks.forEach(task => {
-      template.appendChild(this._taskItem(task));
+      const item = this._taskItem(task);
+
+      this._addEvents(item, task);
+
+      template.appendChild(item);
     });
 
     this._setEmptyClass(tasks.length == 0);
@@ -38,12 +42,8 @@ class TaskListView {
     this._setEmptyClass(tasks.length - 1 == 0);
   }
 
-  _setEmptyClass(neededEmptyClass) {
-    if (neededEmptyClass) {
-      this._taskList.classList.add("todo-list_empty");
-    } else {
-      this._taskList.classList.remove("todo-list_empty");
-    }
+  _setEmptyClass(emptyClassIsActive) {
+    this._taskList.classList.toggle("todo-list_empty", emptyClassIsActive);
   }
 
   _taskItem(task) {
@@ -51,7 +51,7 @@ class TaskListView {
     const checkBox = this._checkBox(task);
     const inputField = this._inputField(task);
     const spanField = this._spanField(task);
-    const removeButton = this._removeTaskButton(task);
+    const removeButton = this._removeTaskButton();
     li.dataset.id = task.id;
 
     li.classList.add('todo-list__item');
@@ -69,28 +69,15 @@ class TaskListView {
     checkBox.classList.add('todo-list__complete-button');
     checkBox.setAttribute('aria-label', 'complete task');
 
-    checkBox.addEventListener('click', ({target}) => this._completeTaskAction(task,  target.checked));
-
     return checkBox;
   }
 
   _inputField(task) {
-    let valueBefore = task.text;
     const inputField = document.createElement('input');
     
     inputField.type = 'text';
     inputField.classList.add('todo-list__text', 'todo-list__text_thin_font', 'changed-font');
     inputField.value = task.text;
-
-    inputField.addEventListener('focusin', ({target}) => {
-      valueBefore = target.value;
-    });
-
-    inputField.addEventListener('focusout', ({target}) => {
-      if (target.value !== valueBefore) {
-        this._changeTextAction(task, target.value);
-      }
-    });
 
     return inputField;
   }
@@ -104,15 +91,43 @@ class TaskListView {
     return spanField;
   }
 
-  _removeTaskButton(task) {
+  _removeTaskButton() {
     const button = document.createElement('button');
 
     button.classList.add('todo-list__remove-task-button');
     button.setAttribute('aria-label', 'remove item');
 
-    button.addEventListener('click', () => this._removeTaskActiom(task.id));
-
     return button;
+  }
+
+  _addEvents(item, task) {
+    const removeButton  = item.querySelector('.todo-list__remove-task-button');
+    const checkBox = item.querySelector('.todo-list__complete-button');
+    const inputField = item.querySelector('input.todo-list__text_thin_font');
+
+    let valueBefore = task.text;
+    
+    const checkBoxOnClick = ({target}) => this._completeTaskAction(task,  target.checked);
+    const inputFieldFocusin =  ({target}) => {
+      valueBefore = target.value;
+    };
+    const inputFieldFocusout =  ({target}) => {
+      if (target.value !== valueBefore) {
+        this._changeTextAction(task, target.value);
+      }
+    }
+    const removeButtonOnClick = () => {
+      this._removeTaskActiom(task.id);
+      removeButton.removeEventListener('click', removeButtonOnClick);
+      checkBox.removeEventListener('click', checkBoxOnClick);
+      inputField.removeEventListener('focusin', inputFieldFocusin);
+      inputField.removeEventListener('focusout', inputFieldFocusout);
+    };
+
+    checkBox.addEventListener('click', checkBoxOnClick);
+    inputField.addEventListener('focusin', inputFieldFocusin);
+    inputField.addEventListener('focusout', inputFieldFocusout);
+    removeButton.addEventListener('click', removeButtonOnClick);
   }
 }
 
