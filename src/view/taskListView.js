@@ -118,9 +118,10 @@ class TaskListView {
         this._changeTextAction(task, target.value);
       }
     }
-    
+
     const removeButtonOnClick = () => {
       this._removeTaskActiom(task.id);
+      
       removeButton.removeEventListener('click', removeButtonOnClick);
       checkBox.removeEventListener('click', checkBoxOnClick);
       inputField.removeEventListener('focusin', inputFieldFocusin);
