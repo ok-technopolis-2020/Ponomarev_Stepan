@@ -24,7 +24,8 @@ class TaskListView {
       template.appendChild(item);
     });
 
-    this._setEmptyClass(tasks.length == 0);
+    const listIsEmpty = tasks.length == 0;
+    this._setEmptyClass(listIsEmpty);
 
     this._taskList.appendChild(template);
   }
@@ -38,8 +39,9 @@ class TaskListView {
     }
 
     this._taskList.removeChild(taskItem);
-
-    this._setEmptyClass(tasks.length - 1 == 0);
+    
+    const listIsEmpty = tasks.length - 1 == 0;
+    this._setEmptyClass(listIsEmpty);
   }
 
   _setEmptyClass(emptyClassIsActive) {
@@ -105,9 +107,9 @@ class TaskListView {
     const checkBox = item.querySelector('.todo-list__complete-button');
     const inputField = item.querySelector('input.todo-list__text_thin_font');
 
-    let valueBefore = task.text;
-    
     const checkBoxOnClick = ({target}) => this._completeTaskAction(task,  target.checked);
+
+    let valueBefore = task.text;
     const inputFieldFocusin =  ({target}) => {
       valueBefore = target.value;
     };
@@ -116,6 +118,7 @@ class TaskListView {
         this._changeTextAction(task, target.value);
       }
     }
+    
     const removeButtonOnClick = () => {
       this._removeTaskActiom(task.id);
       removeButton.removeEventListener('click', removeButtonOnClick);
