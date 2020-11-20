@@ -1,20 +1,24 @@
 class AddTaskFormView {
+  #form;
+  #completeAllButton;
+  #inputField;
+
   constructor() {
-    this._form = document.forms["addTaskForm"];
-    this._completeAllButton = this._form["completeAllButton"];
-    this._inputField = this._form["addTaskInputField"];
+    this.#form = document.forms["addTaskForm"];
+    this.#completeAllButton = this.#form["completeAllButton"];
+    this.#inputField = this.#form["addTaskInputField"];
   }
 
   get form() {
-    return this._form;
+    return this.#form;
   }
 
   get completeAllButton() {
-    return this._completeAllButton;
+    return this.#completeAllButton;
   }
 
   get inputField() {
-    return this._inputField;
+    return this.#inputField;
   }
 }
 

@@ -1,69 +1,73 @@
 class TaskListView {
+  #taskList;
+  #completeTaskAction;
+  #changeTextAction;
+  #removeTaskActiom;
+
   constructor() {
-    this._taskList = document.querySelector(".todo-list");
-    this._completeTaskAction = null;
-    this._changeTextAction = null;
-    this._removeTaskActiom = null;
+    this.#taskList = document.querySelector(".todo-list");
+    this.#completeTaskAction = null;
+    this.#changeTextAction = null;
+    this.#removeTaskActiom = null;
   }
 
   init(completeTaskAction, changeTextAction, removeTaskAction) {
-    this._completeTaskAction = completeTaskAction;
-    this._changeTextAction = changeTextAction;
-    this._removeTaskActiom = removeTaskAction;
+    this.#completeTaskAction = completeTaskAction;
+    this.#changeTextAction = changeTextAction;
+    this.#removeTaskActiom = removeTaskAction;
   }
 
   renderTasks(tasks) {
-    this._taskList.innerHTML = '';
+    this.#taskList.innerHTML = '';
     const template = document.createDocumentFragment();
 
     tasks.forEach(task => {
-      const item = this._taskItem(task);
+      const item = this.#taskItem(task);
 
-      this._addEvents(item, task);
+      this.#addEvents(item, task);
 
       template.appendChild(item);
     });
 
     const listIsEmpty = tasks.length == 0;
-    this._setEmptyClass(listIsEmpty);
+    this.#setEmptyClass(listIsEmpty);
 
-    this._taskList.appendChild(template);
+    this.#taskList.appendChild(template);
   }
 
   removeTask(id) {
-    const tasks = Array.from(this._taskList.childNodes);
+    const tasks = Array.from(this.#taskList.childNodes);
     const taskItem = tasks.find(t => t.dataset.id === id);
 
     if (!taskItem) {
       return;
     }
 
-    this._taskList.removeChild(taskItem);
+    this.#taskList.removeChild(taskItem);
     
     const listIsEmpty = tasks.length - 1 == 0;
-    this._setEmptyClass(listIsEmpty);
+    this.#setEmptyClass(listIsEmpty);
   }
 
-  _setEmptyClass(emptyClassIsActive) {
-    this._taskList.classList.toggle("todo-list_empty", emptyClassIsActive);
+  #setEmptyClass(emptyClassIsActive) {
+    this.#taskList.classList.toggle("todo-list_empty", emptyClassIsActive);
   }
 
-  _taskItem(task) {
+  #taskItem(task) {
     const li = document.createElement('li');
-    const checkBox = this._checkBox(task);
-    const inputField = this._inputField(task);
-    const spanField = this._spanField(task);
-    const removeButton = this._removeTaskButton();
-    li.dataset.id = task.id;
+    const checkBox = this.#checkBox(task);
+    const inputField = this.#inputField(task);
+    const spanField = this.#spanField(task);
+    const removeButton = this.#removeTaskButton();
 
+    li.dataset.id = task.id;
     li.classList.add('todo-list__item');
-    
     li.append(checkBox, inputField, spanField, removeButton);
 
     return li;
   }
 
-  _checkBox(task) {
+  #checkBox(task) {
     const checkBox = document.createElement('input');
 
     checkBox.type = 'checkbox';
@@ -74,7 +78,7 @@ class TaskListView {
     return checkBox;
   }
 
-  _inputField(task) {
+  #inputField(task) {
     const inputField = document.createElement('input');
     
     inputField.type = 'text';
@@ -84,7 +88,7 @@ class TaskListView {
     return inputField;
   }
 
-  _spanField(task) {
+  #spanField(task) {
     const spanField = document.createElement('span');
     
     spanField.classList.add('todo-list__text', 'todo-list__text_thin_font', 'changed-font');
@@ -93,7 +97,7 @@ class TaskListView {
     return spanField;
   }
 
-  _removeTaskButton() {
+  #removeTaskButton() {
     const button = document.createElement('button');
 
     button.classList.add('todo-list__remove-task-button');
@@ -102,12 +106,12 @@ class TaskListView {
     return button;
   }
 
-  _addEvents(item, task) {
+  #addEvents(item, task) {
     const removeButton  = item.querySelector('.todo-list__remove-task-button');
     const checkBox = item.querySelector('.todo-list__complete-button');
     const inputField = item.querySelector('input.todo-list__text_thin_font');
 
-    const checkBoxOnClick = ({target}) => this._completeTaskAction(task,  target.checked);
+    const checkBoxOnClick = ({target}) => this.#completeTaskAction(task,  target.checked);
 
     let valueBefore = task.text;
     const inputFieldFocusin =  ({target}) => {
@@ -115,12 +119,12 @@ class TaskListView {
     };
     const inputFieldFocusout =  ({target}) => {
       if (target.value !== valueBefore) {
-        this._changeTextAction(task, target.value);
+        this.#changeTextAction(task, target.value);
       }
     }
 
     const removeButtonOnClick = () => {
-      this._removeTaskActiom(task.id);
+      this.#removeTaskActiom(task.id);
       
       removeButton.removeEventListener('click', removeButtonOnClick);
       checkBox.removeEventListener('click', checkBoxOnClick);

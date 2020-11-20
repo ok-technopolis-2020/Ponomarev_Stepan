@@ -54,7 +54,6 @@ function onFormSubmit(e) {
 
 function onDeleteTask(id) {
   taskStore.removeTask(id);
-
   taskListView.removeTask(id)
 }
 

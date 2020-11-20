@@ -1,24 +1,28 @@
 class ControlPaneView {
+  #leftItemsInfo;
+  #filterRadioButtons;
+  #clearCompletedButton;
+
   constructor() {
-    this._leftItemsInfo = document.querySelector('.control-pane__left-intems-info');
-    this._filterRadioButtons = document.querySelectorAll('.control-pane__task-filter');
-    this._clearCompletedButton = document.querySelector('.control-pane__clear-tasks-button');
+    this.#leftItemsInfo = document.querySelector('.control-pane__left-intems-info');
+    this.#filterRadioButtons = document.querySelectorAll('.control-pane__task-filter');
+    this.#clearCompletedButton = document.querySelector('.control-pane__clear-tasks-button');
   }
 
   get leftItemsInfo() {
-    return this._leftItemsInfo;
+    return this.#leftItemsInfo;
   }
 
   get filterRadioButtons() {
-    return Array.from(this._filterRadioButtons);
+    return Array.from(this.#filterRadioButtons);
   }
 
   get clearCompletedButton() {
-    return this._clearCompletedButton;
+    return this.#clearCompletedButton;
   }
 
   updateLeftItemsInfo(count) {
-    this._leftItemsInfo.textContent = `${count} items left`
+    this.#leftItemsInfo.textContent = `${count} items left`
   }
 }
 
