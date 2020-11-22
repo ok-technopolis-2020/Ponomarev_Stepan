@@ -1,36 +1,38 @@
 import {taskListKey} from './keyList'
 
 class TaskStore {
+  #tasks;
+
   constructor() {
-    this._tasks = [];
+    this.#tasks = [];
   }
 
   init() {
     const taskListJson = localStorage.getItem(taskListKey);
     const taskListObj = JSON.parse(taskListJson);
 
-    this._tasks = taskListObj == null ? [] : taskListObj;
+    this.#tasks = taskListObj == null ? [] : taskListObj;
   }
 
   saveTask(task) {
-    const index = this._tasks.findIndex(t => t.id == task.id);
+    const index = this.#tasks.findIndex(t => t.id == task.id);
     
     if (index !== -1) {
-      this._tasks[index] = task;
+      this.#tasks[index] = task;
     } else {
-      this._tasks.push(task);
+      this.#tasks.push(task);
     }
 
-    this._saveTasks();
+    this.#saveTasks();
   }
 
   removeTask(id) {
-    this._tasks = this._tasks.filter(t => t.id !== id);
-    this._saveTasks();
+    this.#tasks = this.#tasks.filter(t => t.id !== id);
+    this.#saveTasks();
   }
 
   get taskList() {
-    return this._tasks;
+    return this.#tasks;
   }
 
   get areAllTasksCompleted() {
@@ -41,8 +43,8 @@ class TaskStore {
     this._allTaskAreCompleted = value;
   }
 
-  _saveTasks() {
-    const taskListJson = JSON.stringify(this._tasks);
+  #saveTasks() {
+    const taskListJson = JSON.stringify(this.#tasks);
     localStorage.setItem(taskListKey, taskListJson);
   }
 }
