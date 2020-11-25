@@ -26,6 +26,4 @@ class ControlPaneView {
   }
 }
 
-const controlPaneView = new ControlPaneView();
-
-export default controlPaneView;
+export const controlPaneView = new ControlPaneView();

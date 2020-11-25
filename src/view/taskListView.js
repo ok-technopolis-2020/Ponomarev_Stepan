@@ -139,6 +139,4 @@ class TaskListView {
   }
 }
 
-const taskListView = new TaskListView();
-
-export default taskListView;
+export const taskListView = new TaskListView();

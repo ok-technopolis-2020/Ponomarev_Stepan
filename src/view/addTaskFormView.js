@@ -22,6 +22,4 @@ class AddTaskFormView {
   }
 }
 
-const addTaskFormView = new AddTaskFormView();
-
-export default addTaskFormView;
+export const addTaskFormView = new AddTaskFormView();

@@ -49,6 +49,4 @@ class TaskStore {
   }
 }
 
-const taskStore = new TaskStore();
-
-export default taskStore;
+export const taskStore = new TaskStore();
