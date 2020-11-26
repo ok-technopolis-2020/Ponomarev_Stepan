@@ -6,15 +6,8 @@ import { controlPaneView } from "./view/controlPaneView"
 import { taskListView } from "./view/taskListView"
 import { taskStore } from "./store"
 
-const form = addTaskFormView.form;
-const completeAllButton = addTaskFormView.completeAllButton;
-const addTaskInputField = addTaskFormView.inputField;
-
 const filterRadioButtons = controlPaneView.filterRadioButtons;
 const clearCompletedButton = controlPaneView.clearCompletedButton;
-
-form.addEventListener('submit', onFormSubmit);
-completeAllButton.addEventListener('click', onClickCompleteAll);
 
 filterRadioButtons.forEach(filter => filter.addEventListener('change', renderTasks));
 clearCompletedButton.addEventListener('click', onClickClearCompletedTasks);
@@ -23,6 +16,7 @@ init();
 
 function init() {
   taskStore.init();
+  addTaskFormView.init(onFormSubmit, onClickCompleteAll);
   taskListView.init(onCompleteTask, onTaskTextChanged, onDeleteTask);
   renderTasks();
 }
@@ -36,10 +30,10 @@ function onClickCompleteAll(e) {
 }
 
 function onFormSubmit(e) {
-  const text = addTaskInputField.value;
+  const text = addTaskFormView.value;
 
   e.preventDefault();
-  form.reset();
+  addTaskFormView.reset();
 
   if (!isTextValid(text)) {
     return;
