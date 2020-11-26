@@ -5,7 +5,7 @@ class AddTaskFormView extends AbstractView {
   #completeAllButton
   #inputField;
   #completeAllTasksEvent;
-  #formSubmitEvent;
+  #submitFormEvent;
 
   constructor() {
     super();
@@ -15,14 +15,14 @@ class AddTaskFormView extends AbstractView {
   }
 
   init(formSubmitEvent, completeAllTasksEvent) {
-      this.#formSubmitEvent = formSubmitEvent;
+      this.#submitFormEvent = formSubmitEvent;
       this.#completeAllTasksEvent = completeAllTasksEvent;
       
       this.#initEvents();
   }
 
   destroy() {
-    this.#form.removeEventListener('submit', this.#formSubmitEvent);
+    this.#form.removeEventListener('submit', this.#submitFormEvent);
     this.#completeAllButton.removeEventListener('click', this.#completeAllTasksEvent);
   }
 
@@ -35,7 +35,7 @@ class AddTaskFormView extends AbstractView {
   }
 
   #initEvents() {
-    this.#form.addEventListener('submit', this.#formSubmitEvent);
+    this.#form.addEventListener('submit', this.#submitFormEvent);
     this.#completeAllButton.addEventListener('click', this.#completeAllTasksEvent);
   }
 }
