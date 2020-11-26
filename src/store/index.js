@@ -5,9 +5,10 @@ class TaskStore {
 
   constructor() {
     this.#tasks = [];
+    this.#init();
   }
 
-  init() {
+  #init() {
     const taskListJson = localStorage.getItem(taskListKey);
     const taskListObj = JSON.parse(taskListJson);
 

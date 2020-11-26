@@ -10,13 +10,7 @@ const addTaskFormView = new AddTaskFormView(onFormSubmit, onClickCompleteAll);
 const taskListView = new TaskListView(onCompleteTask, onTaskTextChanged, onDeleteTask);
 const controlPaneView = new ControlPaneView(renderTasks, onClickClearCompletedTasks);
 
-init();
-
-function init() {
-  taskStore.init();
-
-  renderTasks();
-}
+renderTasks();
 
 // Events
 function onClickCompleteAll(e) {
