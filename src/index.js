@@ -6,17 +6,12 @@ import { controlPaneView } from "./view/controlPaneView"
 import { taskListView } from "./view/taskListView"
 import { taskStore } from "./store"
 
-const filterRadioButtons = controlPaneView.filterRadioButtons;
-const clearCompletedButton = controlPaneView.clearCompletedButton;
-
-filterRadioButtons.forEach(filter => filter.addEventListener('change', renderTasks));
-clearCompletedButton.addEventListener('click', onClickClearCompletedTasks);
-
 init();
 
 function init() {
   taskStore.init();
   addTaskFormView.init(onFormSubmit, onClickCompleteAll);
+  controlPaneView.init(renderTasks, onClickClearCompletedTasks);
   taskListView.init(onCompleteTask, onTaskTextChanged, onDeleteTask);
   renderTasks();
 }
@@ -77,7 +72,7 @@ function onClickClearCompletedTasks() {
 
 // Helpers
 function renderTasks() {
-  const filterMode = filterRadioButtons.find(f => f.checked).value;
+  const filterMode = controlPaneView.filterRadioButtons.find(f => f.checked).value;
 
   let tasks = [];
   switch (filterMode) {

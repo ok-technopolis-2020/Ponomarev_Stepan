@@ -17,6 +17,7 @@ class AddTaskFormView extends AbstractView {
   init(formSubmitEvent, completeAllTasksEvent) {
       this.#formSubmitEvent = formSubmitEvent;
       this.#completeAllTasksEvent = completeAllTasksEvent;
+      
       this.#initEvents();
   }
 
