@@ -1,18 +1,20 @@
 "use strict"
 
 import { getId, isTextValid } from './helpers'
-import { addTaskFormView } from "./view/addTaskFormView"
-import { controlPaneView } from "./view/controlPaneView"
-import { taskListView } from "./view/taskListView"
+import { AddTaskFormView } from "./view/addTaskFormView"
+import { ControlPaneView } from "./view/controlPaneView"
+import { TaskListView } from "./view/taskListView"
 import { taskStore } from "./store"
+
+const addTaskFormView = new AddTaskFormView(onFormSubmit, onClickCompleteAll);
+const taskListView = new TaskListView(onCompleteTask, onTaskTextChanged, onDeleteTask);
+const controlPaneView = new ControlPaneView(renderTasks, onClickClearCompletedTasks);
 
 init();
 
 function init() {
   taskStore.init();
-  addTaskFormView.init(onFormSubmit, onClickCompleteAll);
-  controlPaneView.init(renderTasks, onClickClearCompletedTasks);
-  taskListView.init(onCompleteTask, onTaskTextChanged, onDeleteTask);
+
   renderTasks();
 }
 

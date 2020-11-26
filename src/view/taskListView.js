@@ -1,7 +1,7 @@
 import { AbstractView } from "./AbstractView";
 import { TodoItemView } from "./toloItemView";
 
-class TaskListView extends AbstractView {
+export class TaskListView extends AbstractView {
   #taskListElement;
   #taskItems;
 
@@ -9,16 +9,13 @@ class TaskListView extends AbstractView {
   #changeTextEvent;
   #removeTaskEvent;
 
-  constructor() {
+  constructor(completeTaskEvent, changeTextEvent, removeTaskEvent) {
     super();
     this.#taskListElement = document.querySelector(".todo-list");
-    this.#taskItems = [];
-  }
-
-  init(completeTaskEvent, changeTextEvent, removeTaskEvent) {
     this.#completeTaskEvent = completeTaskEvent;
     this.#changeTextEvent = changeTextEvent;
     this.#removeTaskEvent = removeTaskEvent;
+    this.#taskItems = [];
   }
 
   destroy() {
@@ -26,7 +23,7 @@ class TaskListView extends AbstractView {
   }
 
   renderTasks(tasks) {
-    this.#destroyItems();
+    this.destroy();
 
     tasks.forEach(task => {
       this.#taskItems.push(this.#createTaskItem(task));
@@ -46,9 +43,9 @@ class TaskListView extends AbstractView {
     this.#taskListElement.removeChild(item.taskItemElement);
     item.destroy()
 
-    this.#taskItems = this.#taskItems.splice(index, 1);
-
-    const listIsEmpty = this.#taskItems.length - 1 == 0;
+    this.#taskItems.splice(index, 1);
+    
+    const listIsEmpty = this.#taskItems.length == 0;
     this.#setEmptyClass(listIsEmpty);
   }
 
@@ -95,5 +92,3 @@ class TaskListView extends AbstractView {
     this.#taskItems = [];
   }
 }
-
-export const taskListView = new TaskListView();

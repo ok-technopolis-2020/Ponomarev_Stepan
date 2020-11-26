@@ -1,20 +1,18 @@
 import { AbstractView } from "./AbstractView";
 
-class ControlPaneView extends AbstractView {
+export class ControlPaneView extends AbstractView {
   #leftItemsInfo;
   #filterRadioButtons;
   #clearCompletedButton;
   #filterChangedEvent;
   #clearCompletedEvent;
 
-  constructor() {
+  constructor(filterChangedEvent, clearCompletedEvent) {
     super();
     this.#leftItemsInfo = document.querySelector('.control-pane__left-intems-info');
     this.#filterRadioButtons = document.querySelectorAll('.control-pane__task-filter');
     this.#clearCompletedButton = document.querySelector('.control-pane__clear-tasks-button');
-  }
 
-  init(filterChangedEvent, clearCompletedEvent) {
     this.#filterChangedEvent = filterChangedEvent;
     this.#clearCompletedEvent = clearCompletedEvent;
 
@@ -39,5 +37,3 @@ class ControlPaneView extends AbstractView {
     this.#clearCompletedButton.addEventListener('click', this.#clearCompletedEvent);
   }
 }
-
-export const controlPaneView = new ControlPaneView();

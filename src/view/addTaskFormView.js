@@ -1,24 +1,21 @@
 import { AbstractView } from "./AbstractView";
 
-class AddTaskFormView extends AbstractView {
+export class AddTaskFormView extends AbstractView {
   #form;
   #completeAllButton
   #inputField;
   #completeAllTasksEvent;
   #submitFormEvent;
 
-  constructor() {
+  constructor(formSubmitEvent, completeAllTasksEvent) {
     super();
     this.#form = document.forms["addTaskForm"];
     this.#completeAllButton = this.#form["completeAllButton"];
     this.#inputField = this.#form["addTaskInputField"];
-  }
 
-  init(formSubmitEvent, completeAllTasksEvent) {
-      this.#submitFormEvent = formSubmitEvent;
-      this.#completeAllTasksEvent = completeAllTasksEvent;
-      
-      this.#initEvents();
+    this.#submitFormEvent = formSubmitEvent;
+    this.#completeAllTasksEvent = completeAllTasksEvent;
+    this.#initEvents();
   }
 
   destroy() {
@@ -39,5 +36,3 @@ class AddTaskFormView extends AbstractView {
     this.#completeAllButton.addEventListener('click', this.#completeAllTasksEvent);
   }
 }
-
-export const addTaskFormView = new AddTaskFormView();
