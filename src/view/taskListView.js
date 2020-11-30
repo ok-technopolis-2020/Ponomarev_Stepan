@@ -1,7 +1,8 @@
+import { Observer } from "../observer/observer";
 import { AbstractView } from "./AbstractView";
-import { TodoItemView } from "./toloItemView";
+import { TodoItemView } from "./ToloItemView";
 
-export class TaskListView extends AbstractView {
+export class TaskListView extends AbstractView, Observer {
   #taskListElement;
   #taskItems;
 

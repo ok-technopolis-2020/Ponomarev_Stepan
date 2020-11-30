@@ -1,9 +1,12 @@
+import { Observable } from '../observer/Observable';
 import {taskListKey} from './keyList'
 
-class TaskStore {
+export class TaskStore extends Observable {
   #tasks;
 
-  constructor() {
+  constructor(observers) {
+    super(observers);
+
     this.#tasks = [];
     this.#init();
   }
@@ -13,6 +16,8 @@ class TaskStore {
     const taskListObj = JSON.parse(taskListJson);
 
     this.#tasks = taskListObj == null ? [] : taskListObj;
+
+    this.changed();
   }
 
   saveTask(task) {
@@ -25,11 +30,15 @@ class TaskStore {
     }
 
     this.#saveTasks();
+
+    this.changed();
   }
 
   removeTask(id) {
     this.#tasks = this.#tasks.filter(t => t.id !== id);
     this.#saveTasks();
+
+    this.changed();
   }
 
   get taskList() {
@@ -48,6 +57,10 @@ class TaskStore {
     const taskListJson = JSON.stringify(this.#tasks);
     localStorage.setItem(taskListKey, taskListJson);
   }
-}
 
-export const taskStore = new TaskStore();
+  changed() {
+    for (observer in this.observerList) {
+      observer.signal();
+    }
+  }
+}

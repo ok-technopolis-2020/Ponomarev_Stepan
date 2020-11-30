@@ -4,8 +4,9 @@ import { getId, isTextValid } from './helpers'
 import { AddTaskFormView } from "./view/addTaskFormView"
 import { ControlPaneView } from "./view/controlPaneView"
 import { TaskListView } from "./view/taskListView"
-import { taskStore } from "./store"
+import { TaskStore, taskStore } from "./store/TaskStore"
 
+const store = new TaskStore([taskListView]);
 const addTaskFormView = new AddTaskFormView(onFormSubmit, onClickCompleteAll);
 const taskListView = new TaskListView(onCompleteTask, onTaskTextChanged, onDeleteTask);
 const controlPaneView = new ControlPaneView(renderTasks, onClickClearCompletedTasks);
@@ -21,9 +22,12 @@ function onClickCompleteAll(e) {
 }
 
 function onFormSubmit(e) {
-  const text = addTaskFormView.value;
-
   e.preventDefault();
+
+  const form = e.target;
+  const inputField = form["addTaskInputField"];
+  const text = inputField.value;
+
   addTaskFormView.reset();
 
   if (!isTextValid(text)) {
