@@ -9,18 +9,17 @@ export class TodoItemView extends AbstractView {
     #spanFieldElement;
     #removeTaskButtonElement;
 
+    #controller;
+
     #completeTaskEvent;
     #inputFieldFocusinEvent;
     #inputFieldFocusoutEvent;
     #removeTaskEvent;
 
-    constructor(task, completeTaskEvent, inputFieldFocusinEvent, inputFieldFocusoutEvent, removeTaskEvent) {
+    constructor(task, controller) {
         super();
         this.#task = task;
-        this.#completeTaskEvent = completeTaskEvent;
-        this.#removeTaskEvent = removeTaskEvent;
-        this.#inputFieldFocusinEvent = inputFieldFocusinEvent;
-        this.#inputFieldFocusoutEvent = inputFieldFocusoutEvent;
+        this.#controller = controller;
         this.#taskItemElement = this.#createElement();
         this.#initEvents();
     }
@@ -38,6 +37,38 @@ export class TodoItemView extends AbstractView {
 
     get taskId() {
         return this.#task.id;
+    }
+
+    #initEvents() {
+        let valueBefore = this.#task.text;
+
+        this.#completeTaskEvent = ({target}) => {
+            this.#task.completed = target.checked;
+
+            this.#controller.putTask(this.#task);
+        }
+
+        this.#inputFieldFocusinEvent = ({target}) => {
+            valueBefore = target.value;
+        }
+
+        this.#removeTaskEvent  = () => {
+            this.#controller.deleteTask(this.#task.id)
+        }
+
+        this.#inputFieldFocusoutEvent = ({ target }) => {
+            if (target.value !== valueBefore) {
+                const task = {...this.#task};
+                
+                this.#controller.putTask(task);
+            }
+        }
+
+
+        this.#checkBoxElement.addEventListener('click', this.#completeTaskEvent);
+        this.#inputFieldElement.addEventListener('focusin', this.#inputFieldFocusinEvent);
+        this.#inputFieldElement.addEventListener('focusout', this.#inputFieldFocusoutEvent);
+        this.#removeTaskButtonElement.addEventListener('click', this.#removeTaskEvent);
     }
 
     #createElement() {
@@ -91,12 +122,5 @@ export class TodoItemView extends AbstractView {
         button.setAttribute('aria-label', 'remove item');
 
         this.#removeTaskButtonElement = button;
-    }
-
-    #initEvents() {
-        this.#checkBoxElement.addEventListener('click', this.#completeTaskEvent);
-        this.#inputFieldElement.addEventListener('focusin', this.#inputFieldFocusinEvent);
-        this.#inputFieldElement.addEventListener('focusout', this.#inputFieldFocusoutEvent);
-        this.#removeTaskButtonElement.addEventListener('click', this.#removeTaskEvent);
     }
 }

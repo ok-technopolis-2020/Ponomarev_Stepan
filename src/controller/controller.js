@@ -7,12 +7,20 @@ export class Controller {
         this.#store = store;
     }
 
-    addTask(text) {
+    saveTask(text) {
         if (!isTextValid(text)) {
             return;
         }
 
         const task = this.#createTask(text);
+
+        this.#store.saveTask(task);
+    }
+
+    putTask(task) {
+        if (!isTextValid(task.text)) {
+            return;
+        }
 
         this.#store.saveTask(task);
     }

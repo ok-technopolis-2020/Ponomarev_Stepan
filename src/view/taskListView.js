@@ -7,18 +7,11 @@ export class TaskListView extends AbstractView {
   #observer;
   #controller;
 
-  #completeTaskEvent;
-  #changeTextEvent;
-  #removeTaskEvent;
-
-  constructor({onCompleteTask, onTaskTextChanged, onDeleteTask}, controller, observer) {
+  constructor(controller, observer) {
     super();
     this.#controller = controller;
     this.#observer = observer;
     this.#taskListElement = document.querySelector(".todo-list");
-    this.#completeTaskEvent = onCompleteTask;
-    this.#changeTextEvent = onTaskTextChanged;
-    this.#removeTaskEvent = onDeleteTask;
     this.#taskItems = [];
 
     this.#observer.signal = () => {
@@ -74,25 +67,7 @@ export class TaskListView extends AbstractView {
   }
 
   #createTaskItem(task) {
-    let valueBefore = task.text;
-
-    const completeTaskEvent = ({ target }) => this.#completeTaskEvent(task, target.checked);
-
-    const inputFieldFocusin = ({ target }) => {
-      valueBefore = target.value;
-    };
-
-    const inputFieldFocusout = ({ target }) => {
-      if (target.value !== valueBefore) {
-        this.#changeTextEvent(task, target.value);
-      }
-    }
-
-    const removeButtonOnClick = () => {
-      this.#removeTaskEvent(task.id);
-    };
-
-    return new TodoItemView(task, completeTaskEvent, inputFieldFocusin, inputFieldFocusout, removeButtonOnClick);
+    return new TodoItemView(task, this.#controller);
   }
 
   #destroyItems() {

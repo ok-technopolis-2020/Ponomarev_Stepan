@@ -13,40 +13,12 @@ const taskStore = new TaskStore([observer]);
 const controller = new Controller(taskStore);
 
 const addTaskFormView = new AddTaskFormView(controller);
-const taskListView = new TaskListView({onCompleteTask, onTaskTextChanged, onDeleteTask}, controller, observer);
+const taskListView = new TaskListView(controller, observer);
 const controlPaneView = new ControlPaneView({renderTasks, onClickClearCompletedTasks}, controller);
 
 renderTasks();
 
 // Events
-function onClickCompleteAll(e) {
-  e.preventDefault();
-
-  setTasksCompletedStatus(!taskStore.areAllTasksCompleted);
-  renderTasks();
-}
-
-function onDeleteTask(id) {
-  taskStore.removeTask(id);
-  taskListView.removeTask(id)
-}
-
-function onCompleteTask(task, completeStatus) {
-  task.completed = completeStatus;
-  taskStore.saveTask(task);
-
-  renderTasks();
-}
-
-function onTaskTextChanged(task, text) {
-  if (isTextValid(text)) {
-    task.text = text;
-    taskStore.saveTask(task);
-  }
-
-  renderTasks();
-}
-
 function onClickClearCompletedTasks() {
   const tasksToRemove = taskStore.taskList.filter(task => task.completed);
 

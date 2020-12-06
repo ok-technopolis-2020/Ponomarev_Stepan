@@ -45,7 +45,7 @@ export class AddTaskFormView extends AbstractView {
       const inputField = form["addTaskInputField"];
       const text = inputField.value;
 
-      this.#controller.addTask(text);
+      this.#controller.saveTask(text);
 
       form.reset();
     }
