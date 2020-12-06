@@ -1,15 +1,20 @@
 "use strict"
 
 import { getId, isTextValid } from './helpers'
-import { AddTaskFormView } from "./view/addTaskFormView"
+import { AddTaskFormView } from "./view/AddTaskFormView"
 import { ControlPaneView } from "./view/controlPaneView"
 import { TaskListView } from "./view/taskListView"
-import { TaskStore, taskStore } from "./store/TaskStore"
+import { TaskStore } from "./store/TaskStore"
+import {Controller} from './controller/Controller';
+import { TaskStoreObserver } from './observer/TaskStoreObserver'
 
-const store = new TaskStore([taskListView]);
-const addTaskFormView = new AddTaskFormView(onFormSubmit, onClickCompleteAll);
-const taskListView = new TaskListView(onCompleteTask, onTaskTextChanged, onDeleteTask);
-const controlPaneView = new ControlPaneView(renderTasks, onClickClearCompletedTasks);
+const observer = new TaskStoreObserver();
+const taskStore = new TaskStore([observer]);
+const controller = new Controller(taskStore);
+
+const addTaskFormView = new AddTaskFormView(controller);
+const taskListView = new TaskListView({onCompleteTask, onTaskTextChanged, onDeleteTask}, controller, observer);
+const controlPaneView = new ControlPaneView({renderTasks, onClickClearCompletedTasks}, controller);
 
 renderTasks();
 
@@ -18,26 +23,6 @@ function onClickCompleteAll(e) {
   e.preventDefault();
 
   setTasksCompletedStatus(!taskStore.areAllTasksCompleted);
-  renderTasks();
-}
-
-function onFormSubmit(e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const inputField = form["addTaskInputField"];
-  const text = inputField.value;
-
-  addTaskFormView.reset();
-
-  if (!isTextValid(text)) {
-    return;
-  }
-
-  const task = createTask(text);
-
-  taskStore.saveTask(task);
-
   renderTasks();
 }
 

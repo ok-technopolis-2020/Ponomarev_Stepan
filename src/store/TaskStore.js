@@ -6,18 +6,8 @@ export class TaskStore extends Observable {
 
   constructor(observers) {
     super(observers);
-
     this.#tasks = [];
     this.#init();
-  }
-
-  #init() {
-    const taskListJson = localStorage.getItem(taskListKey);
-    const taskListObj = JSON.parse(taskListJson);
-
-    this.#tasks = taskListObj == null ? [] : taskListObj;
-
-    this.changed();
   }
 
   saveTask(task) {
@@ -34,11 +24,23 @@ export class TaskStore extends Observable {
     this.changed();
   }
 
+  saveTasks(tasks) {
+    this.#tasks = tasks;
+
+    this.changed();
+  }
+
   removeTask(id) {
     this.#tasks = this.#tasks.filter(t => t.id !== id);
     this.#saveTasks();
 
     this.changed();
+  }
+
+  changed() {
+    this.observerList.forEach(observer => {
+      observer.signal();
+    });
   }
 
   get taskList() {
@@ -53,14 +55,17 @@ export class TaskStore extends Observable {
     this._allTaskAreCompleted = value;
   }
 
+  #init() {
+    const taskListJson = localStorage.getItem(taskListKey);
+    const taskListObj = JSON.parse(taskListJson);
+
+    this.#tasks = taskListObj == null ? [] : taskListObj;
+
+    this.changed();
+  }
+
   #saveTasks() {
     const taskListJson = JSON.stringify(this.#tasks);
     localStorage.setItem(taskListKey, taskListJson);
-  }
-
-  changed() {
-    for (observer in this.observerList) {
-      observer.signal();
-    }
   }
 }

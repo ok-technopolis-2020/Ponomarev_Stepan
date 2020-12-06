@@ -7,14 +7,14 @@ export class ControlPaneView extends AbstractView {
   #filterChangedEvent;
   #clearCompletedEvent;
 
-  constructor(filterChangedEvent, clearCompletedEvent) {
+  constructor({renderTasks, onClickClearCompletedTasks}) {
     super();
     this.#leftItemsInfo = document.querySelector('.control-pane__left-intems-info');
     this.#filterRadioButtons = document.querySelectorAll('.control-pane__task-filter');
     this.#clearCompletedButton = document.querySelector('.control-pane__clear-tasks-button');
 
-    this.#filterChangedEvent = filterChangedEvent;
-    this.#clearCompletedEvent = clearCompletedEvent;
+    this.#filterChangedEvent = renderTasks;
+    this.#clearCompletedEvent = onClickClearCompletedTasks;
 
     this.#initEvents();
   }

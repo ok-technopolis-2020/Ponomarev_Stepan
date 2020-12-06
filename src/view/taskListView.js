@@ -1,22 +1,29 @@
-import { Observer } from "../observer/observer";
 import { AbstractView } from "./AbstractView";
-import { TodoItemView } from "./ToloItemView";
+import { TodoItemView } from "./TodoItemView";
 
-export class TaskListView extends AbstractView, Observer {
+export class TaskListView extends AbstractView {
   #taskListElement;
   #taskItems;
+  #observer;
+  #controller;
 
   #completeTaskEvent;
   #changeTextEvent;
   #removeTaskEvent;
 
-  constructor(completeTaskEvent, changeTextEvent, removeTaskEvent) {
+  constructor({onCompleteTask, onTaskTextChanged, onDeleteTask}, controller, observer) {
     super();
+    this.#controller = controller;
+    this.#observer = observer;
     this.#taskListElement = document.querySelector(".todo-list");
-    this.#completeTaskEvent = completeTaskEvent;
-    this.#changeTextEvent = changeTextEvent;
-    this.#removeTaskEvent = removeTaskEvent;
+    this.#completeTaskEvent = onCompleteTask;
+    this.#changeTextEvent = onTaskTextChanged;
+    this.#removeTaskEvent = onDeleteTask;
     this.#taskItems = [];
+
+    this.#observer.signal = () => {
+      this.renderTasks(this.#controller.tasks);
+    }
   }
 
   destroy() {

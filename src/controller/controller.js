@@ -1,16 +1,13 @@
-import { taskStore } from "../store/TaskStore"
+import {isTextValid, getId} from '../helpers'
 
-class Controller {
+export class Controller {
     #store;
-    #view;
 
-    constructor({ store, view }) {
+    constructor(store) {
         this.#store = store;
-        this.#view = view;
     }
 
     addTask(text) {
-        //TODO: Сдеалть выброс ошибки
         if (!isTextValid(text)) {
             return;
         }
@@ -24,6 +21,25 @@ class Controller {
         this.#store.removeTask(id);
     }
 
+    get tasks() {
+        return this.#store.taskList;
+    }
+
+    changeTasksCompletedStatus() {
+        const status = !this.#store.areAllTasksCompleted;
+
+        const tasks = [];
+
+        this.#store.taskList.forEach(task => {
+          task.completed = status;
+          tasks.push(task);
+        });
+
+        this.#store.saveTasks(tasks);
+      
+        this.#store.areAllTasksCompleted = status;
+      }
+
     #createTask(text) {
         const task = {
             id: getId(),
@@ -34,5 +50,3 @@ class Controller {
         return task;
     }
 }
-
-export const controller = new Controller({ store: taskStore });
