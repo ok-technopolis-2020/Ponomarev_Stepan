@@ -1,11 +1,12 @@
 import { Observable } from '../observer/Observable';
 import {taskListKey} from './keyList'
 
-export class TaskStore extends Observable {
+export class TaskStore {
   #tasks;
+  #observable
 
-  constructor(observers) {
-    super(observers);
+  constructor(observable) {
+    this.#observable = observable
     this.#tasks = [];
     this.#init();
   }
@@ -20,27 +21,21 @@ export class TaskStore extends Observable {
     }
 
     this.#saveTasks();
-
-    this.changed();
+    this.#observable.changed();
   }
 
-  saveTasks(tasks) {
+  setTasks(tasks) {
     this.#tasks = tasks;
+    this.#saveTasks();
 
-    this.changed();
+    this.#observable.changed();
   }
 
   removeTask(id) {
     this.#tasks = this.#tasks.filter(t => t.id !== id);
     this.#saveTasks();
 
-    this.changed();
-  }
-
-  changed() {
-    this.observerList.forEach(observer => {
-      observer.signal();
-    });
+    this.#observable.changed();
   }
 
   get taskList() {
@@ -61,7 +56,7 @@ export class TaskStore extends Observable {
 
     this.#tasks = taskListObj == null ? [] : taskListObj;
 
-    this.changed();
+    this.#observable.changed();
   }
 
   #saveTasks() {

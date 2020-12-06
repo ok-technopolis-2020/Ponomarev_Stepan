@@ -1,10 +1,12 @@
-import {isTextValid, getId} from '../helpers'
+import { isTextValid, getId } from '../helpers'
 
 export class Controller {
     #store;
+    #filterStatus;
 
-    constructor(store) {
+    constructor(store, filter) {
         this.#store = store;
+        this.#filterStatus = filter;
     }
 
     saveTask(text) {
@@ -29,8 +31,32 @@ export class Controller {
         this.#store.removeTask(id);
     }
 
+    deleteCompletedTasks() {
+        const tasks = this.#store.taskList.filter(task => !task.completed);
+
+        this.#store.setTasks(tasks);
+    }
+
     get tasks() {
-        return this.#store.taskList;
+        let tasks = [];
+
+        switch (this.#filterStatus) {
+            case 'All':
+                tasks = this.#store.taskList;
+                break;
+            case 'Active':
+                tasks = this.#store.taskList.filter(task => !task.completed);
+                break;
+            case 'Completed':
+                tasks = this.#store.taskList.filter(task => task.completed);
+                break;
+        }
+
+        return tasks;
+    }
+
+    get leftAmount() {
+        return this.#store.taskList.filter(task => !task.completed).length;
     }
 
     changeTasksCompletedStatus() {
@@ -39,14 +65,14 @@ export class Controller {
         const tasks = [];
 
         this.#store.taskList.forEach(task => {
-          task.completed = status;
-          tasks.push(task);
+            task.completed = status;
+            tasks.push(task);
         });
 
-        this.#store.saveTasks(tasks);
-      
+        this.#store.setTasks(tasks);
+
         this.#store.areAllTasksCompleted = status;
-      }
+    }
 
     #createTask(text) {
         const task = {
@@ -56,5 +82,9 @@ export class Controller {
         }
 
         return task;
+    }
+
+    set filter(filter) {
+        this.#filterStatus = filter
     }
 }

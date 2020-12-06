@@ -59,11 +59,12 @@ export class TodoItemView extends AbstractView {
         this.#inputFieldFocusoutEvent = ({ target }) => {
             if (target.value !== valueBefore) {
                 const task = {...this.#task};
+
+                task.text = target.value;
                 
                 this.#controller.putTask(task);
             }
         }
-
 
         this.#checkBoxElement.addEventListener('click', this.#completeTaskEvent);
         this.#inputFieldElement.addEventListener('focusin', this.#inputFieldFocusinEvent);

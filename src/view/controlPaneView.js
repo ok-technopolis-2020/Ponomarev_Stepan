@@ -7,14 +7,23 @@ export class ControlPaneView extends AbstractView {
   #filterChangedEvent;
   #clearCompletedEvent;
 
-  constructor({renderTasks, onClickClearCompletedTasks}) {
+  #observer;
+  #observable;
+  #controller;
+
+  constructor(controller, observer, observable) {
     super();
+    this.#observer = observer;
+    this.#observable = observable;
+    this.#controller = controller;
+
     this.#leftItemsInfo = document.querySelector('.control-pane__left-intems-info');
     this.#filterRadioButtons = document.querySelectorAll('.control-pane__task-filter');
     this.#clearCompletedButton = document.querySelector('.control-pane__clear-tasks-button');
 
-    this.#filterChangedEvent = renderTasks;
-    this.#clearCompletedEvent = onClickClearCompletedTasks;
+    this.#observer.signal = () => {
+      this.#updateLeftItemsInfo(this.#controller.leftAmount);
+    }
 
     this.#initEvents();
   }
@@ -24,7 +33,7 @@ export class ControlPaneView extends AbstractView {
     this.#clearCompletedButton.removeEventListener('click', this.#clearCompletedEvent);
   }
 
-  updateLeftItemsInfo(count) {
+  #updateLeftItemsInfo(count) {
     this.#leftItemsInfo.textContent = `${count} items left`
   }
 
@@ -33,6 +42,17 @@ export class ControlPaneView extends AbstractView {
   }
 
   #initEvents() {
+    this.#filterChangedEvent = () => {
+      const filter = this.filterRadioButtons.find(f => f.checked).value;
+
+      this.#controller.filter = filter;
+      this.#observable.changed();
+    }
+
+    this.#clearCompletedEvent = () => {
+      this.#controller.deleteCompletedTasks();
+    }
+
     this.filterRadioButtons.forEach(filter => filter.addEventListener('change', this.#filterChangedEvent));
     this.#clearCompletedButton.addEventListener('click', this.#clearCompletedEvent);
   }
