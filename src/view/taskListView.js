@@ -19,10 +19,6 @@ export class TaskListView extends AbstractView {
     }
   }
 
-  destroy() {
-    this.#destroyItems();
-  }
-
   renderTasks(tasks) {
     this.destroy();
 
@@ -33,21 +29,8 @@ export class TaskListView extends AbstractView {
     this.#renderTasks();
   }
 
-  removeTask(id) {
-    const index = this.#taskItems.findIndex(t => t.taskId == id);
-
-    if (index == -1) {
-      return;
-    }
-
-    const item = this.#taskItems[index];
-    this.#taskListElement.removeChild(item.taskItemElement);
-    item.destroy()
-
-    this.#taskItems.splice(index, 1);
-    
-    const listIsEmpty = this.#taskItems.length == 0;
-    this.#setEmptyClass(listIsEmpty);
+  destroy() {
+    this.#destroyItems();
   }
 
   #renderTasks() {

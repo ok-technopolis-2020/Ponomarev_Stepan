@@ -23,10 +23,6 @@ export class AddTaskFormView extends AbstractView {
     this.#completeAllButton.removeEventListener('click', this.#completeAllTasksEvent);
   }
 
-  reset() {
-    this.#form.reset();
-  }
-
   get value() {
     return this.#inputField.value;
   }

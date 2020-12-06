@@ -55,10 +55,6 @@ export class Controller {
         return tasks;
     }
 
-    get leftAmount() {
-        return this.#store.taskList.filter(task => !task.completed).length;
-    }
-
     changeTasksCompletedStatus() {
         const status = !this.#store.areAllTasksCompleted;
 
@@ -74,6 +70,14 @@ export class Controller {
         this.#store.areAllTasksCompleted = status;
     }
 
+    get leftAmount() {
+        return this.#store.taskList.filter(task => !task.completed).length;
+    }
+
+    set filter(filter) {
+        this.#filterStatus = filter
+    }
+
     #createTask(text) {
         const task = {
             id: getId(),
@@ -82,9 +86,5 @@ export class Controller {
         }
 
         return task;
-    }
-
-    set filter(filter) {
-        this.#filterStatus = filter
     }
 }

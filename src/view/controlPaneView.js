@@ -4,6 +4,7 @@ export class ControlPaneView extends AbstractView {
   #leftItemsInfo;
   #filterRadioButtons;
   #clearCompletedButton;
+  
   #filterChangedEvent;
   #clearCompletedEvent;
 
@@ -33,12 +34,12 @@ export class ControlPaneView extends AbstractView {
     this.#clearCompletedButton.removeEventListener('click', this.#clearCompletedEvent);
   }
 
-  #updateLeftItemsInfo(count) {
-    this.#leftItemsInfo.textContent = `${count} items left`
-  }
-
   get filterRadioButtons() {
     return Array.from(this.#filterRadioButtons);
+  }
+
+  #updateLeftItemsInfo(count) {
+    this.#leftItemsInfo.textContent = `${count} items left`
   }
 
   #initEvents() {

@@ -1,4 +1,3 @@
-import { Observable } from '../observer/Observable';
 import {taskListKey} from './keyList'
 
 export class TaskStore {
