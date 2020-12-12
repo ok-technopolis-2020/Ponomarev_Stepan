@@ -6,6 +6,6 @@ export class TaskRenderObserver extends Observer {
     }
 
     signal() {
-       
+
     }
 }

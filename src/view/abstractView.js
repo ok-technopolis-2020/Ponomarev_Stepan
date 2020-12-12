@@ -1,5 +1,5 @@
 export class AbstractView {
-    constructor() {}
+    constructor() { }
 
     destroy() {
         throw new Error("This method mus be implemented");

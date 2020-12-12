@@ -5,7 +5,7 @@ export class AddTaskFormView extends AbstractView {
   #completeAllButton
   #inputField;
   #completeAllTasksEvent;
-  #addTaskEvent 
+  #addTaskEvent
   #controller;
 
   constructor(controller) {
@@ -45,7 +45,7 @@ export class AddTaskFormView extends AbstractView {
 
       form.reset();
     }
-    
+
     this.#form.addEventListener('submit', this.#addTaskEvent);
     this.#completeAllButton.addEventListener('click', this.#completeAllTasksEvent);
   }

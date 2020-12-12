@@ -4,7 +4,7 @@ export class ControlPaneView extends AbstractView {
   #leftItemsInfo;
   #filterRadioButtons;
   #clearCompletedButton;
-  
+
   #filterChangedEvent;
   #clearCompletedEvent;
 

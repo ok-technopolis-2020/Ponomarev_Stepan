@@ -1,6 +1,6 @@
 export class Observer {
     constructor() {
-     
+
     }
 
     signal() {

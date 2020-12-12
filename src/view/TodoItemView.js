@@ -42,26 +42,26 @@ export class TodoItemView extends AbstractView {
     #initEvents() {
         let valueBefore = this.#task.text;
 
-        this.#completeTaskEvent = ({target}) => {
+        this.#completeTaskEvent = ({ target }) => {
             this.#task.completed = target.checked;
 
             this.#controller.putTask(this.#task);
         }
 
-        this.#inputFieldFocusinEvent = ({target}) => {
+        this.#inputFieldFocusinEvent = ({ target }) => {
             valueBefore = target.value;
         }
 
-        this.#removeTaskEvent  = () => {
+        this.#removeTaskEvent = () => {
             this.#controller.deleteTask(this.#task.id)
         }
 
         this.#inputFieldFocusoutEvent = ({ target }) => {
             if (target.value !== valueBefore) {
-                const task = {...this.#task};
+                const task = { ...this.#task };
 
                 task.text = target.value;
-                
+
                 this.#controller.putTask(task);
             }
         }

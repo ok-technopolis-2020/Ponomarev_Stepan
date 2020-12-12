@@ -4,9 +4,9 @@ import { AddTaskFormView } from "./view/AddTaskFormView";
 import { ControlPaneView } from "./view/ControlPaneView";
 import { TaskListView } from "./view/TaskListView";
 import { TaskStore } from "./store/TaskStore";
-import {Controller} from './controller/Controller';
+import { Controller } from './controller/Controller';
 import { TaskRenderObserver } from './observer/TaskRenderObserver';
-import {LeftInfoObserver} from './observer/LeftInfoObserver';
+import { LeftInfoObserver } from './observer/LeftInfoObserver';
 import { TaskRenderObservable } from './observer/TaskRenderObservable';
 
 const dafaultFilter = "All";

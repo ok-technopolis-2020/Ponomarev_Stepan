@@ -1,4 +1,4 @@
-import {taskListKey} from './keyList'
+import { taskListKey } from './keyList'
 
 export class TaskStore {
   #tasks;
@@ -12,7 +12,7 @@ export class TaskStore {
 
   saveTask(task) {
     const index = this.#tasks.findIndex(t => t.id == task.id);
-    
+
     if (index !== -1) {
       this.#tasks[index] = task;
     } else {

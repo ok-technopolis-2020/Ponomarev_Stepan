@@ -5,5 +5,5 @@ export class LeftInfoObserver extends Observer {
         super();
     }
 
-    signal() {}
+    signal() { }
 }
