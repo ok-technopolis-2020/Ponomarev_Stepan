@@ -1,5 +1,6 @@
 "use strict"
 
+import "../styles/styles.css";
 import { AddTaskFormView } from "./view/AddTaskFormView";
 import { ControlPaneView } from "./view/ControlPaneView";
 import { TaskListView } from "./view/TaskListView";
