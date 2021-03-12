@@ -1,4 +1,4 @@
-@import "./input-area__input.css";
+@import "/styles/input-area/input-area__input.css";
 
 .input-area {
   position: sticky;

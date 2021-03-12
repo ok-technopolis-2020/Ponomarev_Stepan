@@ -1,7 +1,7 @@
-@import "./control-pane__tabs.css";
-@import "./control-pane__task-filter.css";
-@import "./control-pane__left-intems-info.css";
-@import "./control-pane__clear-tasks-button.css";
+@import "/styles/control-pane/control-pane__tabs.css";
+@import "/styles/control-pane/control-pane__task-filter.css";
+@import "/styles/control-pane/control-pane__left-intems-info.css";
+@import "/styles/control-pane/control-pane__clear-tasks-button.css";
 
 .control-pane {
   background-color: var(--theme-color);

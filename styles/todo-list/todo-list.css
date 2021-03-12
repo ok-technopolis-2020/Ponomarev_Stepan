@@ -1,7 +1,7 @@
-@import "./todo-list__item.css";
-@import "./todo-list__text.css";
-@import "./todo-list__complete-button.css";
-@import "./todo-list__remove-task-button.css";
+@import "/styles/todo-list/todo-list__item.css";
+@import "/styles/todo-list/todo-list__text.css";
+@import "/styles/todo-list/todo-list__complete-button.css";
+@import "/styles/todo-list/todo-list__remove-task-button.css";
 
 .todo-list {
   background-color: var(--theme-color);
@@ -11,6 +11,24 @@
 
   &_no-margin {
     margin: 0;
+  }
+
+  &_empty {
+    animation-name: apperance;
+    animation-duration: 1s;
+    background-image: url(/assets/empty-list.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+  }
+}
+
+@keyframes apperance {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
